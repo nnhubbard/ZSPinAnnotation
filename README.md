@@ -9,10 +9,41 @@ Have you ever felt limited by the three Annotation pin colors that Apple provide
 How It Works
 ---
 
-Create a ZSImageView and set the remote and default image:
+Create a ZSPinAnnotation:
 
 ```objective-c
 UIImage *img = [ZSPinAnnotation pinAnnotationWithColor:[UIColor blueColor]];
+```
+
+Use a ZSPinAnnotation on a MapView:
+
+```objective-c
+- (MKAnnotationView *)mapView:(MKMapView *)mV viewForAnnotation:(id <MKAnnotation>)annotation {
+	
+	if(![annotation isKindOfClass:[Annotation class]]) // Don't mess user location
+        return nil;
+	
+	static NSString *defaultPinID = @"StandardIdentifier";
+	MKAnnotationView *pinView = (MKAnnotationView *)[self.mapView dequeueReusableAnnotationViewWithIdentifier:defaultPinID];
+	if (pinView == nil){
+		pinView = [[[MKAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:defaultPinID] autorelease];
+		//pinView.animatesDrop = YES;
+	}
+	
+	// Build our annotation
+	if ([annotation isKindOfClass:[Annotation class]]) {
+		Annotation *a = (Annotation *)annotation;
+		pinView.image = [ZSPinAnnotation pinAnnotationWithColor:a.color];// ZSPinAnnotation Being Used
+		pinView.annotation = a;
+		pinView.enabled = YES;
+		pinView.calloutOffset = CGPointMake(-11,0);
+	}
+	
+	pinView.canShowCallout = YES;
+	
+	return pinView;
+	
+}//end
 ```
 
 How to use in your App

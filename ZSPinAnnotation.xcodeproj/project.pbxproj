@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2336E62B148EE177006F9AD9 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 2336E62A148EE177006F9AD9 /* README.md */; };
 		23495D1D148ECCCF003E3691 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23495D1C148ECCCF003E3691 /* UIKit.framework */; };
 		23495D1F148ECCCF003E3691 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23495D1E148ECCCF003E3691 /* Foundation.framework */; };
 		23495D21148ECCCF003E3691 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23495D20148ECCCF003E3691 /* CoreGraphics.framework */; };
@@ -26,10 +27,10 @@
 		23495D4D148ECD3F003E3691 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23495D4C148ECD3F003E3691 /* MapKit.framework */; };
 		23495D55148ECE4A003E3691 /* Annotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 23495D54148ECE4A003E3691 /* Annotation.m */; };
 		23495D5B148ED052003E3691 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23495D5A148ED052003E3691 /* CoreLocation.framework */; };
-		23B0BB26148EDB6F000479A9 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 23B0BB25148EDB6F000479A9 /* README.md */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2336E62A148EE177006F9AD9 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
 		23495D18148ECCCF003E3691 /* ZSPinAnnotation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZSPinAnnotation.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		23495D1C148ECCCF003E3691 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		23495D1E148ECCCF003E3691 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -56,7 +57,6 @@
 		23495D53148ECE4A003E3691 /* Annotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Annotation.h; sourceTree = "<group>"; };
 		23495D54148ECE4A003E3691 /* Annotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Annotation.m; sourceTree = "<group>"; };
 		23495D5A148ED052003E3691 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
-		23B0BB25148EDB6F000479A9 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +79,7 @@
 		23495D0D148ECCCF003E3691 = {
 			isa = PBXGroup;
 			children = (
+				2336E62A148EE177006F9AD9 /* README.md */,
 				23495D39148ECCE8003E3691 /* ZSPinAnnotation */,
 				23495D4E148ECE13003E3691 /* Objects */,
 				23495D22148ECCCF003E3691 /* Views */,
@@ -123,7 +124,6 @@
 		23495D23148ECCCF003E3691 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				23B0BB25148EDB6F000479A9 /* README.md */,
 				23495D2B148ECCD0003E3691 /* ZSAppDelegate.h */,
 				23495D2C148ECCD0003E3691 /* ZSAppDelegate.m */,
 				23495D24148ECCCF003E3691 /* ZSPinAnnotation-Info.plist */,
@@ -226,7 +226,7 @@
 				23495D47148ECD12003E3691 /* shading@2x.png in Resources */,
 				23495D48148ECD12003E3691 /* stick.png in Resources */,
 				23495D49148ECD12003E3691 /* stick@2x.png in Resources */,
-				23B0BB26148EDB6F000479A9 /* README.md in Resources */,
+				2336E62B148EE177006F9AD9 /* README.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

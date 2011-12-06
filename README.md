@@ -19,6 +19,8 @@ How to use in your App
 ---
 `ZSPinAnnotation` requires the `QuartzCore.framework`.
 
+Take a look at the demo project in the download to see how you can easily use the `UIImages` as `MKMapView` annotation images.
+
 Notes
 ---
 

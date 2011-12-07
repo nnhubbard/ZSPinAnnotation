@@ -8,18 +8,64 @@
 
 #import "ZSPinAnnotation.h"
 
+@interface ZSPinAnnotation ()
+
++ (UIImage *)imageWithColor:(UIColor *)color;
+
+@end
+
 @implementation ZSPinAnnotation
 
+/**
+ * Draw the pin
+ *
+ * @version $Revision: 0.1
+ */
 + (UIImage *)pinAnnotationWithColor:(UIColor *)color {
 	
-	// Color Ball
-	UIImage *img = [UIImage imageNamed:@"color.png"];
+	// Build the colored ball
+	UIImage *coloredImg = [self imageWithColor:color];
 	
 	// Shading
 	UIImage *shading = [UIImage imageNamed:@"shading.png"];
 	
 	// Annotation Pin
 	UIImage *stick = [UIImage imageNamed:@"stick.png"];
+	
+	// Start new graphcs context
+	UIGraphicsBeginImageContext(stick.size);
+	
+	CGRect rectFull = CGRectMake(0, 0, stick.size.width, stick.size.height);
+	
+	// Draw Stick
+	[coloredImg drawInRect:rectFull];
+	
+	// Draw Shading
+	[shading drawInRect:rectFull];
+	
+	// Draw Stick
+	[stick drawInRect:rectFull];
+	
+	UIImage *pinImage = UIGraphicsGetImageFromCurrentImageContext();
+	
+	// End
+    UIGraphicsEndImageContext();
+    
+    //return the image
+    return pinImage;
+	
+}//end
+
+
+/**
+ * Color the image
+ *
+ * @version $Revision: 0.1
+ */
++ (UIImage *)imageWithColor:(UIColor *)color {
+	
+	// Color Ball
+	UIImage *img = [UIImage imageNamed:@"color.png"];
 	
 	// begin a new image context, to draw our colored image onto
     UIGraphicsBeginImageContext(img.size);
@@ -50,27 +96,7 @@
 	// End
     UIGraphicsEndImageContext();
 	
-	// Start new graphcs context
-	UIGraphicsBeginImageContext(stick.size);
-	
-	CGRect rectFull = CGRectMake(0, 0, stick.size.width, stick.size.height);
-	
-	// Draw Stick
-	[coloredImg drawInRect:rectFull];
-	
-	// Draw Shading
-	[shading drawInRect:rectFull];
-	
-	// Draw Stick
-	[stick drawInRect:rectFull];
-	
-	UIImage *pinImage = UIGraphicsGetImageFromCurrentImageContext();
-	
-	// End
-    UIGraphicsEndImageContext();
-    
-    //return the image
-    return pinImage;
+	return coloredImg;
 	
 }//end
 

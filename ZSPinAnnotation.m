@@ -65,6 +65,9 @@
 	[stick drawInRect:rectFull];
 	
 	UIImage *pinImage = UIGraphicsGetImageFromCurrentImageContext();
+	
+	// End
+    UIGraphicsEndImageContext();
     
     //return the image
     return pinImage;

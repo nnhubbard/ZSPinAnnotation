@@ -33,7 +33,7 @@
 	UIImage *stick = [UIImage imageNamed:@"stick.png"];
 	
 	// Start new graphcs context
-	UIGraphicsBeginImageContext(stick.size);
+	UIGraphicsBeginImageContextWithOptions(stick.size, NO, [[UIScreen mainScreen] scale]);
 	
 	CGRect rectFull = CGRectMake(0, 0, stick.size.width, stick.size.height);
 	
@@ -68,7 +68,7 @@
 	UIImage *img = [UIImage imageNamed:@"color.png"];
 	
 	// begin a new image context, to draw our colored image onto
-    UIGraphicsBeginImageContext(img.size);
+	UIGraphicsBeginImageContextWithOptions(img.size, NO, [[UIScreen mainScreen] scale]);
     
     // get a reference to that context we created
     CGContextRef context = UIGraphicsGetCurrentContext();

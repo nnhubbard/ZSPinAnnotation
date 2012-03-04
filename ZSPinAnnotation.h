@@ -12,5 +12,6 @@
 @interface ZSPinAnnotation : NSObject
 
 + (UIImage *)pinAnnotationWithColor:(UIColor *)color;
++ (UIImage *)pinAnnotationWithRed:(int)red green:(int)green blue:(int)blue;
 
 @end

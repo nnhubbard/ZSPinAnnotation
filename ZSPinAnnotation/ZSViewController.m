@@ -157,6 +157,7 @@
 		pinView.image = [ZSPinAnnotation pinAnnotationWithColor:a.color];// ZSPinAnnotation Being Used
 		pinView.annotation = a;
 		pinView.enabled = YES;
+		pinView.centerOffset=CGPointMake(6.5,-16);
 		pinView.calloutOffset = CGPointMake(-11,0);
 	}
 	

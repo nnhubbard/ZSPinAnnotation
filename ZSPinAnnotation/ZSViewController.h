@@ -10,11 +10,9 @@
 #import <MapKit/MapKit.h>
 #import <CoreLocation/CoreLocation.h>
 
-@interface ZSViewController : UIViewController <MKMapViewDelegate> {
-	MKMapView *mapView;
-}
+@interface ZSViewController : UIViewController <MKMapViewDelegate>
 
-@property (nonatomic, retain) IBOutlet MKMapView *mapView;
+@property (nonatomic, strong) IBOutlet MKMapView *mapView;
 
 - (MKMapRect)makeMapRectWithAnnotations:(NSArray *)annotations;
 

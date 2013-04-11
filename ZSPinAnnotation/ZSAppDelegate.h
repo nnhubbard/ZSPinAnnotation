@@ -13,7 +13,6 @@
 @interface ZSAppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
-
 @property (strong, nonatomic) ZSViewController *viewController;
 
 @end

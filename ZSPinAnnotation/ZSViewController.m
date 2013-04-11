@@ -39,7 +39,7 @@
     [super viewDidLoad];
 	
 	// Array
-	NSMutableArray *annotationArray = [[[NSMutableArray alloc] init] autorelease];
+	NSMutableArray *annotationArray = [[NSMutableArray alloc] init];
 	
 	// Create some annotations
 	Annotation *annotation = nil;
@@ -49,56 +49,54 @@
 	annotation.color = RGB(13, 0, 182);
 	annotation.title = @"Color Annotation";
 	[annotationArray addObject:annotation];
-	[annotation release];
 	
 	annotation = [[Annotation alloc] init];
 	annotation.coordinate = CLLocationCoordinate2DMake(45.492, -122.798);
 	annotation.color = RGB(0, 182, 146);
 	annotation.title = @"Color Annotation";
 	[annotationArray addObject:annotation];
-	[annotation release];
 	
 	annotation = [[Annotation alloc] init];
 	annotation.coordinate = CLLocationCoordinate2DMake(45.524, -122.704);
 	annotation.color = RGB(182, 154, 0);
 	annotation.title = @"Color Annotation";
 	[annotationArray addObject:annotation];
-	[annotation release];
 	
 	annotation = [[Annotation alloc] init];
 	annotation.coordinate = CLLocationCoordinate2DMake(45.591, -122.617);
 	annotation.color = RGB(88, 88, 88);
 	annotation.title = @"Color Annotation";
 	[annotationArray addObject:annotation];
-	[annotation release];
 	
 	annotation = [[Annotation alloc] init];
 	annotation.coordinate = CLLocationCoordinate2DMake(45.497, -122.634);
 	annotation.color = [UIColor redColor];
 	annotation.title = @"Color Annotation";
 	[annotationArray addObject:annotation];
-	[annotation release];
 	
 	annotation = [[Annotation alloc] init];
 	annotation.coordinate = CLLocationCoordinate2DMake(45.553, -122.607);
 	annotation.color = [UIColor purpleColor];
 	annotation.title = @"Color Annotation";
 	[annotationArray addObject:annotation];
-	[annotation release];
 	
 	annotation = [[Annotation alloc] init];
 	annotation.coordinate = CLLocationCoordinate2DMake(45.520, -122.618);
 	annotation.color = [UIColor greenColor];
 	annotation.title = @"Color Annotation";
 	[annotationArray addObject:annotation];
-	[annotation release];
 	
 	annotation = [[Annotation alloc] init];
 	annotation.coordinate = CLLocationCoordinate2DMake(45.540, -122.618);
 	annotation.color = [UIColor magentaColor];
 	annotation.title = @"Color Annotation";
 	[annotationArray addObject:annotation];
-	[annotation release];
+	
+	annotation = [[Annotation alloc] init];
+	annotation.coordinate = CLLocationCoordinate2DMake(45.540, -122.618);
+	annotation.color = [UIColor magentaColor];
+	annotation.title = @"TEST";
+	[annotationArray addObject:annotation];
 	
 	// Center map
 	self.mapView.visibleMapRect = [self makeMapRectWithAnnotations:annotationArray];
@@ -147,7 +145,7 @@
 	static NSString *defaultPinID = @"StandardIdentifier";
 	MKAnnotationView *pinView = (MKAnnotationView *)[self.mapView dequeueReusableAnnotationViewWithIdentifier:defaultPinID];
 	if (pinView == nil){
-		pinView = [[[MKAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:defaultPinID] autorelease];
+		pinView = [[MKAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:defaultPinID];
 		//pinView.animatesDrop = YES;
 	}
 	
@@ -157,6 +155,7 @@
 		pinView.image = [ZSPinAnnotation pinAnnotationWithColor:a.color];// ZSPinAnnotation Being Used
 		pinView.annotation = a;
 		pinView.enabled = YES;
+		pinView.centerOffset=CGPointMake(6.5,-16);
 		pinView.calloutOffset = CGPointMake(-11,0);
 	}
 	
@@ -234,9 +233,5 @@
 }
 
 
-- (void)dealloc {
-	[mapView release];
-	[super dealloc];
-}
 
 @end

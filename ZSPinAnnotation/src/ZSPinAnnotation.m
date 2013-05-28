@@ -9,10 +9,27 @@
 #import "ZSPinAnnotation.h"
 
 @interface ZSPinAnnotation ()
+@property (nonatomic, strong) NSCache *imageCache;
++ (id)sharedCache;
 + (UIImage *)imageWithColor:(UIColor *)color;
+
 @end
 
 @implementation ZSPinAnnotation
+
+/**
+ * Singleton to handle caching of images
+ *
+ * @version $Revision: 0.1
+ */
++ (id)sharedCache {
+    static dispatch_once_t pred = 0;
+    __strong static id _sharedObject = nil;
+    dispatch_once(&pred, ^{
+        _sharedObject = [[self alloc] init];
+    });
+    return _sharedObject;
+}//end
 
 
 /**
@@ -34,6 +51,19 @@
  * @version $Revision: 0.1
  */
 + (UIImage *)pinAnnotationWithColor:(UIColor *)color {
+    
+    // Shared object
+    ZSPinAnnotation *pn = [ZSPinAnnotation sharedCache];
+    
+    // Color String
+    CGColorRef colorRef = color.CGColor;
+    NSString *colorString = [[CIColor colorWithCGColor:colorRef].stringRepresentation stringByReplacingOccurrencesOfString:@" " withString:@""];
+    
+    // Caching
+    if (!pn.imageCache) pn.imageCache = [[NSCache alloc] init];
+    if ([pn.imageCache objectForKey:colorString]) {
+        return [pn.imageCache objectForKey:colorString];
+    }
 	
 	// Build the colored ball
 	UIImage *coloredImg = [self imageWithColor:color];
@@ -62,6 +92,9 @@
 	
 	// End
     UIGraphicsEndImageContext();
+    
+    // Save to cache
+    [pn.imageCache setObject:pinImage forKey:colorString];
     
     //return the image
     return pinImage;

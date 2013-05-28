@@ -92,12 +92,6 @@
 	annotation.title = @"Color Annotation";
 	[annotationArray addObject:annotation];
 	
-	annotation = [[Annotation alloc] init];
-	annotation.coordinate = CLLocationCoordinate2DMake(45.540, -122.618);
-	annotation.color = [UIColor magentaColor];
-	annotation.title = @"TEST";
-	[annotationArray addObject:annotation];
-	
 	// Center map
 	self.mapView.visibleMapRect = [self makeMapRectWithAnnotations:annotationArray];
 	

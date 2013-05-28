@@ -1,7 +1,7 @@
 ZSPinAnnotation
 =============
 
-Have you ever felt limited by the three Annotation pin colors that Apple provides with MapKit? Have you ever thought it was a pain to have to create custom images in photoshop every time you wanted to change the color?  `ZSPinAnnotation` solves these problems by building the pin image on the fly.  All you have to do is specify a `UIColor` and you get back a `UIImage`.
+Have you ever felt limited by the three Annotation pin colors that Apple provides with MapKit? Have you ever thought it was a pain to have to create custom images in photoshop every time you wanted to change the color?  `ZSPinAnnotation` solves these problems by building the pin image on the fly and even caches them for performance!  All you have to do is specify a `UIColor` and you get back a `UIImage`.
 
 ![ZSPinAnnotation](http://f.cl.ly/items/223W1a0d0s3m3S0h3K37/Screen%20Shot%202011-12-06%20at%203.59.23%20PM.png "ZSPinAnnotation")
 
@@ -47,7 +47,7 @@ Use a ZSPinAnnotation on a MapView:
 
 How to use in your App
 ---
-`ZSPinAnnotation` requires the `QuartzCore.framework`.
+`ZSPinAnnotation` requires `QuartzCore.framework` and `CoreImage.framework`.
 
 Take a look at the demo project in the download to see how you can easily use the `UIImages` as `MKMapView` annotation images.
 

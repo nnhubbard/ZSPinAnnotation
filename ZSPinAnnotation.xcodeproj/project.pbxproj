@@ -28,6 +28,7 @@
 		23495D55148ECE4A003E3691 /* Annotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 23495D54148ECE4A003E3691 /* Annotation.m */; };
 		23495D5B148ED052003E3691 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23495D5A148ED052003E3691 /* CoreLocation.framework */; };
 		451F5A851717803600153DBF /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 451F5A841717803600153DBF /* Default-568h@2x.png */; };
+		454807C617553E080074F06B /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 454807C517553E080074F06B /* CoreImage.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -59,6 +60,7 @@
 		23495D54148ECE4A003E3691 /* Annotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Annotation.m; path = ZSPinAnnotation/Annotation.m; sourceTree = "<group>"; };
 		23495D5A148ED052003E3691 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		451F5A841717803600153DBF /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		454807C517553E080074F06B /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = System/Library/Frameworks/CoreImage.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +68,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				454807C617553E080074F06B /* CoreImage.framework in Frameworks */,
 				23495D5B148ED052003E3691 /* CoreLocation.framework in Frameworks */,
 				23495D4D148ECD3F003E3691 /* MapKit.framework in Frameworks */,
 				23495D4B148ECD39003E3691 /* QuartzCore.framework in Frameworks */,
@@ -102,6 +105,7 @@
 		23495D1B148ECCCF003E3691 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				454807C517553E080074F06B /* CoreImage.framework */,
 				23495D5A148ED052003E3691 /* CoreLocation.framework */,
 				23495D4C148ECD3F003E3691 /* MapKit.framework */,
 				23495D4A148ECD39003E3691 /* QuartzCore.framework */,

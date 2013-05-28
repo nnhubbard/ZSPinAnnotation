@@ -14,5 +14,6 @@
 
 + (UIImage *)pinAnnotationWithColor:(UIColor *)color;
 + (UIImage *)pinAnnotationWithRed:(int)red green:(int)green blue:(int)blue;
++ (UIImage *)pinAnnotationWithHexString:(NSString *)hexString;
 
 @end

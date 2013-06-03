@@ -25,8 +25,7 @@ Use a ZSPinAnnotation on a MapView:
 	static NSString *defaultPinID = @"StandardIdentifier";
 	MKAnnotationView *pinView = (MKAnnotationView *)[self.mapView dequeueReusableAnnotationViewWithIdentifier:defaultPinID];
 	if (pinView == nil){
-		pinView = [[[MKAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:defaultPinID] autorelease];
-		//pinView.animatesDrop = YES;
+		pinView = [[MKAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:defaultPinID];
 	}
 	
 	// Build our annotation
@@ -50,6 +49,16 @@ How to use in your App
 `ZSPinAnnotation` requires `QuartzCore.framework` and `CoreImage.framework`.
 
 Take a look at the demo project in the download to see how you can easily use the `UIImages` as `MKMapView` annotation images.
+
+Different Methods of Pin Creation
+---
+You can use the following methods to create a pin image with the color of your choice:
+
+```objective-c
++ (UIImage *)pinAnnotationWithColor:(UIColor *)color;
++ (UIImage *)pinAnnotationWithRed:(int)red green:(int)green blue:(int)blue;
++ (UIImage *)pinAnnotationWithHexString:(NSString *)hexString;
+```
 
 Notes
 ---

@@ -140,7 +140,6 @@
 	MKAnnotationView *pinView = (MKAnnotationView *)[self.mapView dequeueReusableAnnotationViewWithIdentifier:defaultPinID];
 	if (pinView == nil){
 		pinView = [[MKAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:defaultPinID];
-		//pinView.animatesDrop = YES;
 	}
 	
 	// Build our annotation
@@ -149,8 +148,11 @@
 		pinView.image = [ZSPinAnnotation pinAnnotationWithColor:a.color];// ZSPinAnnotation Being Used
 		pinView.annotation = a;
 		pinView.enabled = YES;
-		pinView.centerOffset=CGPointMake(6.5,-16);
-		pinView.calloutOffset = CGPointMake(-11,0);
+        
+        // Offset to correct placement
+        pinView.centerOffset = CGPointMake(7, -15);
+        pinView.calloutOffset = CGPointMake(-7, 0);
+        
 	}
 	
 	pinView.canShowCallout = YES;

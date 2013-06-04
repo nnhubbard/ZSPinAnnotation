@@ -34,7 +34,11 @@ Use a ZSPinAnnotation on a MapView:
 		pinView.image = [ZSPinAnnotation pinAnnotationWithColor:a.color];// ZSPinAnnotation Being Used
 		pinView.annotation = a;
 		pinView.enabled = YES;
-		pinView.calloutOffset = CGPointMake(-11,0);
+        
+        // Offset to correct placement
+		pinView.centerOffset = CGPointMake(7, -15);
+        pinView.calloutOffset = CGPointMake(-7, 0);
+        
 	}
 	
 	pinView.canShowCallout = YES;
@@ -58,6 +62,14 @@ You can use the following methods to create a pin image with the color of your c
 + (UIImage *)pinAnnotationWithColor:(UIColor *)color;
 + (UIImage *)pinAnnotationWithRed:(int)red green:(int)green blue:(int)blue;
 + (UIImage *)pinAnnotationWithHexString:(NSString *)hexString;
+```
+
+Offsetting Pin For Correct Placement
+---
+Because of the way annotations are added to the `MKMapView` we need to offset the `ZSPinAnnotation` so that it will be placed correctly. In your `mapView:viewForAnnotation:` method make sure to add:
+```objective-c
+pinView.centerOffset = CGPointMake(7, -15);
+pinView.calloutOffset = CGPointMake(-7, 0);
 ```
 
 Notes

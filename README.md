@@ -1,7 +1,7 @@
 ZSPinAnnotation
 =============
 
-Have you ever felt limited by the three Annotation pin colors that Apple provides with MapKit? Have you ever thought it was a pain to have to create custom images in photoshop every time you wanted to change the color?  `ZSPinAnnotation` solves these problems by building the pin annotation on the fly and caching them for performance. All pin annotations use `CoreGraphics` to draw the pin images so you get super sharp and beautiful annotation sof any color.  All you have to do is specify a `UIColor` and you get back a `UIImage` to be used in `mapView:viewForAnnotation:`.
+Have you ever felt limited by the three Annotation pin colors that Apple provides with MapKit? Have you ever thought it was a pain to have to create custom images in photoshop every time you wanted to change the color?  `ZSPinAnnotation` solves these problems by building the pin annotation on the fly and caching them for performance. All pin annotations use `CoreGraphics` to draw the pin images so you get super sharp and beautiful annotations of any color.  All you have to do is specify a `UIColor` and you get back a `UIImage` to be used in `mapView:viewForAnnotation:`.
 
 ![ZSPinAnnotation](http://f.cl.ly/items/1e3K2G3L380s082E2P2u/zspinannotation.png "ZSPinAnnotation")
 

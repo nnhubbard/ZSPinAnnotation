@@ -17,18 +17,12 @@
 		23495D30148ECCD0003E3691 /* ZSViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 23495D2F148ECCD0003E3691 /* ZSViewController.m */; };
 		23495D33148ECCD1003E3691 /* ZSViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 23495D31148ECCD1003E3691 /* ZSViewController.xib */; };
 		23495D3C148ECCFE003E3691 /* ZSPinAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 23495D3B148ECCFE003E3691 /* ZSPinAnnotation.m */; };
-		23495D44148ECD12003E3691 /* color.png in Resources */ = {isa = PBXBuildFile; fileRef = 23495D3E148ECD12003E3691 /* color.png */; };
-		23495D45148ECD12003E3691 /* color@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 23495D3F148ECD12003E3691 /* color@2x.png */; };
-		23495D46148ECD12003E3691 /* shading.png in Resources */ = {isa = PBXBuildFile; fileRef = 23495D40148ECD12003E3691 /* shading.png */; };
-		23495D47148ECD12003E3691 /* shading@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 23495D41148ECD12003E3691 /* shading@2x.png */; };
-		23495D48148ECD12003E3691 /* stick.png in Resources */ = {isa = PBXBuildFile; fileRef = 23495D42148ECD12003E3691 /* stick.png */; };
-		23495D49148ECD12003E3691 /* stick@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 23495D43148ECD12003E3691 /* stick@2x.png */; };
 		23495D4B148ECD39003E3691 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23495D4A148ECD39003E3691 /* QuartzCore.framework */; };
 		23495D4D148ECD3F003E3691 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23495D4C148ECD3F003E3691 /* MapKit.framework */; };
-		23495D55148ECE4A003E3691 /* Annotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 23495D54148ECE4A003E3691 /* Annotation.m */; };
+		23495D55148ECE4A003E3691 /* ZSAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 23495D54148ECE4A003E3691 /* ZSAnnotation.m */; };
 		23495D5B148ED052003E3691 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23495D5A148ED052003E3691 /* CoreLocation.framework */; };
 		451F5A851717803600153DBF /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 451F5A841717803600153DBF /* Default-568h@2x.png */; };
-		454807C617553E080074F06B /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 454807C517553E080074F06B /* CoreImage.framework */; };
+		453E5118179F2FCA00A09188 /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 453E5117179F2FCA00A09188 /* CoreImage.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,19 +42,13 @@
 		23495D32148ECCD1003E3691 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ZSViewController.xib; sourceTree = "<group>"; };
 		23495D3A148ECCFE003E3691 /* ZSPinAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ZSPinAnnotation.h; path = ZSPinAnnotation/src/ZSPinAnnotation.h; sourceTree = "<group>"; };
 		23495D3B148ECCFE003E3691 /* ZSPinAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ZSPinAnnotation.m; path = ZSPinAnnotation/src/ZSPinAnnotation.m; sourceTree = "<group>"; };
-		23495D3E148ECD12003E3691 /* color.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = color.png; path = ZSPinAnnotation/src/images/color.png; sourceTree = "<group>"; };
-		23495D3F148ECD12003E3691 /* color@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "color@2x.png"; path = "ZSPinAnnotation/src/images/color@2x.png"; sourceTree = "<group>"; };
-		23495D40148ECD12003E3691 /* shading.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = shading.png; path = ZSPinAnnotation/src/images/shading.png; sourceTree = "<group>"; };
-		23495D41148ECD12003E3691 /* shading@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "shading@2x.png"; path = "ZSPinAnnotation/src/images/shading@2x.png"; sourceTree = "<group>"; };
-		23495D42148ECD12003E3691 /* stick.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = stick.png; path = ZSPinAnnotation/src/images/stick.png; sourceTree = "<group>"; };
-		23495D43148ECD12003E3691 /* stick@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "stick@2x.png"; path = "ZSPinAnnotation/src/images/stick@2x.png"; sourceTree = "<group>"; };
 		23495D4A148ECD39003E3691 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		23495D4C148ECD3F003E3691 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
-		23495D53148ECE4A003E3691 /* Annotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Annotation.h; path = ZSPinAnnotation/Annotation.h; sourceTree = "<group>"; };
-		23495D54148ECE4A003E3691 /* Annotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Annotation.m; path = ZSPinAnnotation/Annotation.m; sourceTree = "<group>"; };
+		23495D53148ECE4A003E3691 /* ZSAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ZSAnnotation.h; path = ZSPinAnnotation/ZSAnnotation.h; sourceTree = "<group>"; };
+		23495D54148ECE4A003E3691 /* ZSAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ZSAnnotation.m; path = ZSPinAnnotation/ZSAnnotation.m; sourceTree = "<group>"; };
 		23495D5A148ED052003E3691 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		451F5A841717803600153DBF /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
-		454807C517553E080074F06B /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = System/Library/Frameworks/CoreImage.framework; sourceTree = SDKROOT; };
+		453E5117179F2FCA00A09188 /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = System/Library/Frameworks/CoreImage.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,7 +56,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				454807C617553E080074F06B /* CoreImage.framework in Frameworks */,
+				453E5118179F2FCA00A09188 /* CoreImage.framework in Frameworks */,
 				23495D5B148ED052003E3691 /* CoreLocation.framework in Frameworks */,
 				23495D4D148ECD3F003E3691 /* MapKit.framework in Frameworks */,
 				23495D4B148ECD39003E3691 /* QuartzCore.framework in Frameworks */,
@@ -105,7 +93,7 @@
 		23495D1B148ECCCF003E3691 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				454807C517553E080074F06B /* CoreImage.framework */,
+				453E5117179F2FCA00A09188 /* CoreImage.framework */,
 				23495D5A148ED052003E3691 /* CoreLocation.framework */,
 				23495D4C148ECD3F003E3691 /* MapKit.framework */,
 				23495D4A148ECD39003E3691 /* QuartzCore.framework */,
@@ -145,31 +133,17 @@
 		23495D39148ECCE8003E3691 /* ZSPinAnnotation */ = {
 			isa = PBXGroup;
 			children = (
-				23495D3D148ECD06003E3691 /* Images */,
 				23495D3A148ECCFE003E3691 /* ZSPinAnnotation.h */,
 				23495D3B148ECCFE003E3691 /* ZSPinAnnotation.m */,
 			);
 			name = ZSPinAnnotation;
 			sourceTree = "<group>";
 		};
-		23495D3D148ECD06003E3691 /* Images */ = {
-			isa = PBXGroup;
-			children = (
-				23495D3E148ECD12003E3691 /* color.png */,
-				23495D3F148ECD12003E3691 /* color@2x.png */,
-				23495D40148ECD12003E3691 /* shading.png */,
-				23495D41148ECD12003E3691 /* shading@2x.png */,
-				23495D42148ECD12003E3691 /* stick.png */,
-				23495D43148ECD12003E3691 /* stick@2x.png */,
-			);
-			name = Images;
-			sourceTree = "<group>";
-		};
 		23495D4E148ECE13003E3691 /* Objects */ = {
 			isa = PBXGroup;
 			children = (
-				23495D53148ECE4A003E3691 /* Annotation.h */,
-				23495D54148ECE4A003E3691 /* Annotation.m */,
+				23495D53148ECE4A003E3691 /* ZSAnnotation.h */,
+				23495D54148ECE4A003E3691 /* ZSAnnotation.m */,
 			);
 			name = Objects;
 			sourceTree = "<group>";
@@ -227,12 +201,6 @@
 			files = (
 				23495D27148ECCD0003E3691 /* InfoPlist.strings in Resources */,
 				23495D33148ECCD1003E3691 /* ZSViewController.xib in Resources */,
-				23495D44148ECD12003E3691 /* color.png in Resources */,
-				23495D45148ECD12003E3691 /* color@2x.png in Resources */,
-				23495D46148ECD12003E3691 /* shading.png in Resources */,
-				23495D47148ECD12003E3691 /* shading@2x.png in Resources */,
-				23495D48148ECD12003E3691 /* stick.png in Resources */,
-				23495D49148ECD12003E3691 /* stick@2x.png in Resources */,
 				2336E62B148EE177006F9AD9 /* README.md in Resources */,
 				451F5A851717803600153DBF /* Default-568h@2x.png in Resources */,
 			);
@@ -249,7 +217,7 @@
 				23495D2D148ECCD0003E3691 /* ZSAppDelegate.m in Sources */,
 				23495D30148ECCD0003E3691 /* ZSViewController.m in Sources */,
 				23495D3C148ECCFE003E3691 /* ZSPinAnnotation.m in Sources */,
-				23495D55148ECE4A003E3691 /* Annotation.m in Sources */,
+				23495D55148ECE4A003E3691 /* ZSAnnotation.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -325,7 +293,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ZSPinAnnotation/ZSPinAnnotation-Prefix.pch";
 				INFOPLIST_FILE = "ZSPinAnnotation/ZSPinAnnotation-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -338,7 +306,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ZSPinAnnotation/ZSPinAnnotation-Prefix.pch";
 				INFOPLIST_FILE = "ZSPinAnnotation/ZSPinAnnotation-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};

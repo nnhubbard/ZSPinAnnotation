@@ -8,7 +8,7 @@
 
 #import "ZSViewController.h"
 #import "ZSPinAnnotation.h"
-#import "Annotation.h"
+#import "ZSAnnotation.h"
 
 #define RGB(r, g, b) [UIColor colorWithRed:r/255.0 green:g/255.0 blue:b/255.0 alpha:1]
 
@@ -42,55 +42,76 @@
 	NSMutableArray *annotationArray = [[NSMutableArray alloc] init];
 	
 	// Create some annotations
-	Annotation *annotation = nil;
+	ZSAnnotation *annotation = nil;
 	
-	annotation = [[Annotation alloc] init];
+	annotation = [[ZSAnnotation alloc] init];
 	annotation.coordinate = CLLocationCoordinate2DMake(45.570, -122.695);
 	annotation.color = RGB(13, 0, 182);
 	annotation.title = @"Color Annotation";
 	[annotationArray addObject:annotation];
 	
-	annotation = [[Annotation alloc] init];
+	annotation = [[ZSAnnotation alloc] init];
 	annotation.coordinate = CLLocationCoordinate2DMake(45.492, -122.798);
 	annotation.color = RGB(0, 182, 146);
 	annotation.title = @"Color Annotation";
 	[annotationArray addObject:annotation];
 	
-	annotation = [[Annotation alloc] init];
+	annotation = [[ZSAnnotation alloc] init];
 	annotation.coordinate = CLLocationCoordinate2DMake(45.524, -122.704);
 	annotation.color = RGB(182, 154, 0);
 	annotation.title = @"Color Annotation";
 	[annotationArray addObject:annotation];
 	
-	annotation = [[Annotation alloc] init];
+	annotation = [[ZSAnnotation alloc] init];
 	annotation.coordinate = CLLocationCoordinate2DMake(45.591, -122.617);
 	annotation.color = RGB(88, 88, 88);
 	annotation.title = @"Color Annotation";
 	[annotationArray addObject:annotation];
 	
-	annotation = [[Annotation alloc] init];
+	annotation = [[ZSAnnotation alloc] init];
 	annotation.coordinate = CLLocationCoordinate2DMake(45.497, -122.634);
 	annotation.color = [UIColor redColor];
 	annotation.title = @"Color Annotation";
 	[annotationArray addObject:annotation];
 	
-	annotation = [[Annotation alloc] init];
+	annotation = [[ZSAnnotation alloc] init];
 	annotation.coordinate = CLLocationCoordinate2DMake(45.553, -122.607);
 	annotation.color = [UIColor purpleColor];
 	annotation.title = @"Color Annotation";
 	[annotationArray addObject:annotation];
 	
-	annotation = [[Annotation alloc] init];
+	annotation = [[ZSAnnotation alloc] init];
 	annotation.coordinate = CLLocationCoordinate2DMake(45.520, -122.618);
 	annotation.color = [UIColor greenColor];
 	annotation.title = @"Color Annotation";
 	[annotationArray addObject:annotation];
 	
-	annotation = [[Annotation alloc] init];
+	annotation = [[ZSAnnotation alloc] init];
 	annotation.coordinate = CLLocationCoordinate2DMake(45.540, -122.618);
 	annotation.color = [UIColor magentaColor];
 	annotation.title = @"Color Annotation";
 	[annotationArray addObject:annotation];
+    
+    annotation = [[ZSAnnotation alloc] init];
+	annotation.coordinate = CLLocationCoordinate2DMake(45.5490, -122.7382);
+	annotation.color = [UIColor blueColor];
+	annotation.title = @"Color Annotation";
+	[annotationArray addObject:annotation];
+    
+    annotation = [[ZSAnnotation alloc] init];
+	annotation.coordinate = CLLocationCoordinate2DMake(45.5745, -122.7173);
+	annotation.color = [UIColor whiteColor];
+	annotation.title = @"Color Annotation";
+	[annotationArray addObject:annotation];
+    
+    annotation = [[ZSAnnotation alloc] init];
+	annotation.coordinate = CLLocationCoordinate2DMake(45.5383, -122.7302);
+	annotation.color = [UIColor blueColor];
+	annotation.title = @"Color Annotation";
+	[annotationArray addObject:annotation];
+    
+    // Set the type of pin annotation
+    [ZSPinAnnotation setPinAnnotationType:ZSPinAnnotationTypeStandard];
 	
 	// Center map
 	self.mapView.visibleMapRect = [self makeMapRectWithAnnotations:annotationArray];
@@ -127,14 +148,16 @@
 
 
 /**
- * Annotation Views
+ * ZSAnnotation Views
  *
  * @version $Revision: 0.1
  */
 - (MKAnnotationView *)mapView:(MKMapView *)mV viewForAnnotation:(id <MKAnnotation>)annotation {
 	
-	if(![annotation isKindOfClass:[Annotation class]]) // Don't mess user location
+	if(![annotation isKindOfClass:[ZSAnnotation class]]) // Don't mess user location
         return nil;
+    
+    ZSAnnotation *a = (ZSAnnotation *)annotation;
 	
 	static NSString *defaultPinID = @"StandardIdentifier";
 	MKAnnotationView *pinView = (MKAnnotationView *)[self.mapView dequeueReusableAnnotationViewWithIdentifier:defaultPinID];
@@ -143,74 +166,23 @@
 	}
 	
 	// Build our annotation
-	if ([annotation isKindOfClass:[Annotation class]]) {
-		Annotation *a = (Annotation *)annotation;
+	if ([annotation isKindOfClass:[ZSAnnotation class]]) {
+        
 		pinView.image = [ZSPinAnnotation pinAnnotationWithColor:a.color];// ZSPinAnnotation Being Used
 		pinView.annotation = a;
 		pinView.enabled = YES;
+        pinView.canShowCallout = YES;
         
         // Offset to correct placement
-        pinView.centerOffset = CGPointMake(7, -15);
-        pinView.calloutOffset = CGPointMake(-7, 0);
+        pinView.centerOffset = CGPointMake(16, -12);
+        pinView.calloutOffset = CGPointMake(-16, 0);
         
-	}
-	
-	pinView.canShowCallout = YES;
+	}//end
 	
 	return pinView;
 	
 }//end
 
-
-/**
- * Added Annotation Views
- *
- * @version $Revision: 0.1
- */
-- (void)mapView:(MKMapView *)mapView didAddAnnotationViews:(NSArray *)views {
-    
-	MKAnnotationView *aV; 
-	
-    for (aV in views) {
-		
-        // Don't pin drop if annotation is user location
-        if ([aV.annotation isKindOfClass:[MKUserLocation class]]) {
-            continue;
-        }
-		
-        // Check if current annotation is inside visible map rect, else go to next one
-        MKMapPoint point =  MKMapPointForCoordinate(aV.annotation.coordinate);
-        if (!MKMapRectContainsPoint(self.mapView.visibleMapRect, point)) {
-            continue;
-        }
-		
-        CGRect endFrame = aV.frame;
-		
-        // Move annotation out of view
-        aV.frame = CGRectMake(aV.frame.origin.x, aV.frame.origin.y - self.view.frame.size.height, aV.frame.size.width, aV.frame.size.height);
-		
-        // Animate drop
-        [UIView animateWithDuration:0.5 delay:0.04*[views indexOfObject:aV] options:UIViewAnimationCurveLinear animations:^{
-			
-            aV.frame = endFrame;
-			
-			// Animate squash
-        }completion:^(BOOL finished){
-            if (finished) {
-                [UIView animateWithDuration:0.05 animations:^{
-                    aV.transform = CGAffineTransformMakeScale(1.0, 0.8);
-					
-                }completion:^(BOOL finished){
-                    if (finished) {
-                        [UIView animateWithDuration:0.1 animations:^{
-                            aV.transform = CGAffineTransformIdentity;
-                        }];
-                    }
-                }];
-            }
-        }];
-    }
-}//end
 
 #pragma mark - Memory Management
 

@@ -8,13 +8,15 @@
 
 #import <Foundation/Foundation.h>
 #import <MapKit/MKAnnotation.h>
+#import "ZSPinAnnotation.h"
 
-@interface Annotation : NSObject <MKAnnotation>
+@interface ZSAnnotation : NSObject <MKAnnotation>
 
 @property (nonatomic, assign) CLLocationCoordinate2D coordinate;
 @property (nonatomic, copy) NSString *title;
 @property (nonatomic, copy) NSString *subtitle;
 @property (nonatomic, strong) UIColor *color;
+@property (nonatomic) ZSPinAnnotationType type;
 
 // add an init method so you can set the coordinate property on startup
 - (id)initWithCoordinate:(CLLocationCoordinate2D)coord;

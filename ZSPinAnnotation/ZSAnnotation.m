@@ -6,9 +6,9 @@
 //  Copyright 2010 Zed Said Studio. All rights reserved.
 //
 
-#import "Annotation.h"
+#import "ZSAnnotation.h"
 
-@implementation Annotation
+@implementation ZSAnnotation
 
 - (id)initWithCoordinate:(CLLocationCoordinate2D)coord {
     self.coordinate = coord;

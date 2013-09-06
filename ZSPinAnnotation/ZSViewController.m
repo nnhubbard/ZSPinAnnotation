@@ -44,68 +44,57 @@
 	// Create some annotations
 	ZSAnnotation *annotation = nil;
 	
-	annotation = [[ZSAnnotation alloc] init];
-	annotation.coordinate = CLLocationCoordinate2DMake(45.570, -122.695);
+	annotation = [[ZSAnnotation alloc] initWithCoordinate:CLLocationCoordinate2DMake(45.570, -122.695)];
 	annotation.color = RGB(13, 0, 182);
 	annotation.title = @"Color Annotation";
 	[annotationArray addObject:annotation];
 	
-	annotation = [[ZSAnnotation alloc] init];
-	annotation.coordinate = CLLocationCoordinate2DMake(45.492, -122.798);
+	annotation = [[ZSAnnotation alloc] initWithCoordinate:CLLocationCoordinate2DMake(45.492, -122.798)];
 	annotation.color = RGB(0, 182, 146);
 	annotation.title = @"Color Annotation";
 	[annotationArray addObject:annotation];
 	
-	annotation = [[ZSAnnotation alloc] init];
-	annotation.coordinate = CLLocationCoordinate2DMake(45.524, -122.704);
+	annotation = [[ZSAnnotation alloc] initWithCoordinate:CLLocationCoordinate2DMake(45.524, -122.704)];
 	annotation.color = RGB(182, 154, 0);
 	annotation.title = @"Color Annotation";
 	[annotationArray addObject:annotation];
 	
-	annotation = [[ZSAnnotation alloc] init];
-	annotation.coordinate = CLLocationCoordinate2DMake(45.591, -122.617);
+	annotation = [[ZSAnnotation alloc] initWithCoordinate:CLLocationCoordinate2DMake(45.591, -122.617)];
 	annotation.color = RGB(88, 88, 88);
 	annotation.title = @"Color Annotation";
 	[annotationArray addObject:annotation];
-	
-	annotation = [[ZSAnnotation alloc] init];
-	annotation.coordinate = CLLocationCoordinate2DMake(45.497, -122.634);
+
+	annotation = [[ZSAnnotation alloc] initWithCoordinate:CLLocationCoordinate2DMake(45.497, -122.634)];
 	annotation.color = [UIColor redColor];
 	annotation.title = @"Color Annotation";
 	[annotationArray addObject:annotation];
 	
-	annotation = [[ZSAnnotation alloc] init];
-	annotation.coordinate = CLLocationCoordinate2DMake(45.553, -122.607);
+	annotation = [[ZSAnnotation alloc] initWithCoordinate:CLLocationCoordinate2DMake(45.553, -122.607)];
 	annotation.color = [UIColor purpleColor];
 	annotation.title = @"Color Annotation";
 	[annotationArray addObject:annotation];
 	
-	annotation = [[ZSAnnotation alloc] init];
-	annotation.coordinate = CLLocationCoordinate2DMake(45.520, -122.618);
+	annotation = [[ZSAnnotation alloc] initWithCoordinate:CLLocationCoordinate2DMake(45.520, -122.618)];
 	annotation.color = [UIColor greenColor];
 	annotation.title = @"Color Annotation";
 	[annotationArray addObject:annotation];
 	
-	annotation = [[ZSAnnotation alloc] init];
-	annotation.coordinate = CLLocationCoordinate2DMake(45.540, -122.618);
+	annotation = [[ZSAnnotation alloc] initWithCoordinate:CLLocationCoordinate2DMake(45.540, -122.618)];
 	annotation.color = [UIColor magentaColor];
 	annotation.title = @"Color Annotation";
 	[annotationArray addObject:annotation];
     
-    annotation = [[ZSAnnotation alloc] init];
-	annotation.coordinate = CLLocationCoordinate2DMake(45.5490, -122.7382);
+    annotation = [[ZSAnnotation alloc] initWithCoordinate:CLLocationCoordinate2DMake(45.5490, -122.7382)];
 	annotation.color = [UIColor blueColor];
 	annotation.title = @"Color Annotation";
 	[annotationArray addObject:annotation];
     
-    annotation = [[ZSAnnotation alloc] init];
-	annotation.coordinate = CLLocationCoordinate2DMake(45.5745, -122.7173);
+    annotation = [[ZSAnnotation alloc] initWithCoordinate:CLLocationCoordinate2DMake(45.5745, -122.7173)];
 	annotation.color = [UIColor whiteColor];
 	annotation.title = @"Color Annotation";
 	[annotationArray addObject:annotation];
     
-    annotation = [[ZSAnnotation alloc] init];
-	annotation.coordinate = CLLocationCoordinate2DMake(45.5383, -122.7302);
+    annotation = [[ZSAnnotation alloc] initWithCoordinate:CLLocationCoordinate2DMake(45.5383, -122.7302)];
 	annotation.color = [UIColor blueColor];
 	annotation.title = @"Color Annotation";
 	[annotationArray addObject:annotation];

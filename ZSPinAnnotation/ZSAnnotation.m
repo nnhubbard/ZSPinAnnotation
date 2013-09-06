@@ -12,7 +12,7 @@
 
 - (id)initWithCoordinate:(CLLocationCoordinate2D)coord {
     self.coordinate = coord;
-	return nil;
+	return self;
 }
 
 @end

@@ -18,16 +18,25 @@
 
 #pragma mark - View lifecycle
 
-
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
+/**
+ * Rotation Support
+ *
+ * @version $Revision: 0.1
+ */
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
+{
+    // Return YES for supported orientations
 	return (interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
-}
+}//end
 
 
+/**
+ * View Loaded
+ *
+ * @version $Revision: 0.1
+ */
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    self.title = @"ZSPinAnnotation";
 	
 	// Array
 	NSMutableArray *annotationArray = [[NSMutableArray alloc] init];
@@ -110,11 +119,16 @@
 	// Add to map
 	[self.mapView addAnnotations:annotationArray];
 	
-}
+}//end
 
 
 #pragma mark - MapKit
 
+/**
+ * Creates a MKMapRect with the provided annotations
+ *
+ * @version $Revision: 0.1
+ */
 - (MKMapRect)makeMapRectWithAnnotations:(NSArray *)annotations {
 	
 	MKMapRect flyTo = MKMapRectNull;
@@ -130,38 +144,52 @@
 	
 	return flyTo;
 	
-}
+}//end
 
 
+/**
+ * ZSAnnotation Views
+ *
+ * @version $Revision: 0.1
+ */
 - (MKAnnotationView *)mapView:(MKMapView *)mV viewForAnnotation:(id <MKAnnotation>)annotation {
 	
-    // Don't mess with user location
-	if(![annotation isKindOfClass:[ZSAnnotation class]])
+	if(![annotation isKindOfClass:[ZSAnnotation class]]) // Don't mess with user location
         return nil;
     
     ZSAnnotation *a = (ZSAnnotation *)annotation;
-    static NSString *defaultPinID = @"StandardIdentifier";
-    
-    // Create the ZSPinAnnotation object and reuse it
-    ZSPinAnnotation *pinView = (ZSPinAnnotation *)[self.mapView dequeueReusableAnnotationViewWithIdentifier:defaultPinID];
-    if (pinView == nil){
-        pinView = [[ZSPinAnnotation alloc] initWithAnnotation:annotation reuseIdentifier:defaultPinID];
-    }
-    
-    // Set the type of pin to draw and the color
-    pinView.annotationType = ZSPinAnnotationTypeStandard;
-    pinView.annotationColor = a.color;
-    pinView.canShowCallout = YES;
-    
-    return pinView;
 	
-}
+	static NSString *defaultPinID = @"StandardIdentifier";
+	ZSPinAnnotation *pinView = (ZSPinAnnotation *)[self.mapView dequeueReusableAnnotationViewWithIdentifier:defaultPinID];
+	if (pinView == nil){
+		pinView = [[ZSPinAnnotation alloc] initWithAnnotation:annotation reuseIdentifier:defaultPinID];
+	}
+	
+    pinView.annotationType = ZSPinAnnotationTypeStandard;
+	pinView.annotationColor = a.color;
+    pinView.canShowCallout = YES;
+	
+	return pinView;
+	
+}//end
 
+
+#pragma mark - Memory Management
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-    
+    // Release any cached data, images, etc that aren't in use.
 }
+
+
+- (void)viewDidUnload
+{
+    [super viewDidUnload];
+    // Release any retained subviews of the main view.
+    // e.g. self.myOutlet = nil;
+}
+
+
 
 @end

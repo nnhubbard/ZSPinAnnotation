@@ -17,9 +17,6 @@ typedef enum {
     ZSPinAnnotationTypeTag
 } ZSPinAnnotationType;
 
-/*!
-A styled pin icon to be placed on an MKMapView. All drawing is done in CoreGraphics and cached as an image using NSCache. 
-*/
 @interface ZSPinAnnotation : MKAnnotationView
 
 /// The annotation type to draw

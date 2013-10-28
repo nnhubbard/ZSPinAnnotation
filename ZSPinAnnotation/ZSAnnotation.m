@@ -2,17 +2,13 @@
 //  EndAnnotation.m
 //  Ride
 //
-//  Created by Nic Hubbard on 6/22/10.
-//  Copyright 2010 Zed Said Studio. All rights reserved.
+//  Created by Nicholas Hubbard on 6/22/10.
+//  Copyright (c) 2013 Zed Said Studio. All rights reserved.
 //
 
 #import "ZSAnnotation.h"
 
 @implementation ZSAnnotation
 
-- (id)initWithCoordinate:(CLLocationCoordinate2D)coord {
-    self.coordinate = coord;
-	return self;
-}
 
 @end

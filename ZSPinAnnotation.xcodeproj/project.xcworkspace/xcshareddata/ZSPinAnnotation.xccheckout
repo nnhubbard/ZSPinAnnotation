@@ -2,8 +2,10 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>5EFD9ACC-32BA-43F1-BDDF-4EB89F2DD5B5</string>
+	<string>630F3932-FC34-457F-90DE-1E80DE5A273C</string>
 	<key>IDESourceControlProjectName</key>
 	<string>ZSPinAnnotation</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
@@ -19,7 +21,7 @@
 		<string>../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>ssh://github.com/nnhubbard/ZSPinAnnotation.git</string>
+	<string>https://bitbucket.org/zedsaid/simple-geocaching.git</string>
 	<key>IDESourceControlProjectVersion</key>
 	<integer>110</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>

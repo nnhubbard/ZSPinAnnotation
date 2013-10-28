@@ -74,6 +74,7 @@
 			children = (
 				2336E62A148EE177006F9AD9 /* README.md */,
 				23495D39148ECCE8003E3691 /* ZSPinAnnotation */,
+				23495D4E148ECE13003E3691 /* Objects */,
 				23495D22148ECCCF003E3691 /* Views */,
 				23495D23148ECCCF003E3691 /* Supporting Files */,
 				23495D1B148ECCCF003E3691 /* Frameworks */,
@@ -134,10 +135,17 @@
 			children = (
 				23495D3A148ECCFE003E3691 /* ZSPinAnnotation.h */,
 				23495D3B148ECCFE003E3691 /* ZSPinAnnotation.m */,
+			);
+			name = ZSPinAnnotation;
+			sourceTree = "<group>";
+		};
+		23495D4E148ECE13003E3691 /* Objects */ = {
+			isa = PBXGroup;
+			children = (
 				23495D53148ECE4A003E3691 /* ZSAnnotation.h */,
 				23495D54148ECE4A003E3691 /* ZSAnnotation.m */,
 			);
-			name = ZSPinAnnotation;
+			name = Objects;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -285,7 +293,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ZSPinAnnotation/ZSPinAnnotation-Prefix.pch";
 				INFOPLIST_FILE = "ZSPinAnnotation/ZSPinAnnotation-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -298,7 +306,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ZSPinAnnotation/ZSPinAnnotation-Prefix.pch";
 				INFOPLIST_FILE = "ZSPinAnnotation/ZSPinAnnotation-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};

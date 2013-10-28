@@ -3,7 +3,7 @@
 //  ZSPinAnnotation
 //
 //  Created by Nicholas Hubbard on 12/6/11.
-//  Copyright (c) 2013 Zed Said Studio. All rights reserved.
+//  Copyright (c) 2011 Zed Said Studio. All rights reserved.
 //
 
 #import "ZSPinAnnotation.h"
@@ -37,9 +37,12 @@
  */
 - (id)initWithAnnotation:(id<MKAnnotation>)annotation reuseIdentifier:(NSString *)reuseIdentifier {
     if(self = [super initWithAnnotation:annotation reuseIdentifier:reuseIdentifier]) {
-        // Defaults
+        
+        // Offset to correct placement
+        self.centerOffset = CGPointMake(16, -12);
+        self.calloutOffset = CGPointMake(-16, 0);
         self.annotationColor = [UIColor redColor];
-        self.annotationType = ZSPinAnnotationTypeStandard;
+        self.annotationType = ZSPinAnnotationTypeStandard;// Set a default for the user
     }
     return self;
 }
@@ -95,7 +98,7 @@
     // What type of pin are we drawing?
     if (type == ZSPinAnnotationTypeStandard) {
         
-        CGSize size = CGSizeMake(102, 94);
+        CGSize size = CGSizeMake(50, 50);
         UIGraphicsBeginImageContextWithOptions(size, NO, 0.0f);
         
         //// General Declarations
@@ -143,7 +146,7 @@
         CGGradientRef stickGradient = CGGradientCreateWithColors(colorSpace, (__bridge CFArrayRef)stickGradientColors, stickGradientLocations);
         NSArray* vertStickGradientColors = [NSArray arrayWithObjects:
                                             (id)stickGradiantColor.CGColor,
-                                            (id)[UIColor colorWithRed: 0.5 green: 0 blue: 0 alpha: 0.154].CGColor,
+                                            (id)[fillColor colorWithAlphaComponent:0.154].CGColor,
                                             (id)color2.CGColor,
                                             (id)[UIColor colorWithRed: 0 green: 0 blue: 0 alpha: 0.07].CGColor,
                                             (id)color5.CGColor, nil];
@@ -155,98 +158,92 @@
         CGSize shadow2Offset = CGSizeMake(-4.1, -2.1);
         CGFloat shadow2BlurRadius = 5;
         UIColor* pinGroupShadowColor = color9;
-        CGSize pinGroupShadowColorOffset = CGSizeMake(87.1, 6.1);
+        CGSize pinGroupShadowColorOffset = CGSizeMake(53.1, 6.1);
         CGFloat pinGroupShadowColorBlurRadius = 5;
         
-        //// Full Pin
+        //// ZSSAnnotation Pin
         {
-            //// ZSSAnnotation Pin
-            {
-                //// Below Pin Circle Drawing
-                UIBezierPath* belowPinCirclePath = [UIBezierPath bezierPathWithOvalInRect: CGRectMake(49.5, 46.5, 5, 2.5)];
-                [bottomCircle setFill];
-                [belowPinCirclePath fill];
-                
-                
-                //// Main Pin Stick Drawing
-                UIBezierPath* mainPinStickPath = [UIBezierPath bezierPathWithRect: CGRectMake(50.5, 25, 3, 23)];
-                CGContextSaveGState(context);
-                [mainPinStickPath addClip];
-                CGContextDrawLinearGradient(context, stickGradient, CGPointMake(53.5, 36.5), CGPointMake(50.5, 36.5), 0);
-                CGContextRestoreGState(context);
-                
-                
-                //// Pin Ball Drawing
-                UIBezierPath* pinBallPath = [UIBezierPath bezierPathWithOvalInRect: CGRectMake(44, 10, 15.5, 15.5)];
-                CGContextSaveGState(context);
-                [pinBallPath addClip];
-                CGContextDrawRadialGradient(context, buttonGradient,
-                                            CGPointMake(49.47, 14.59), 0.42,
-                                            CGPointMake(51.75, 17.75), 8.35,
-                                            kCGGradientDrawsBeforeStartLocation | kCGGradientDrawsAfterEndLocation);
-                CGContextRestoreGState(context);
-                
-                ////// Pin Ball Inner Shadow
-                CGRect pinBallBorderRect = CGRectInset([pinBallPath bounds], -shadow2BlurRadius, -shadow2BlurRadius);
-                pinBallBorderRect = CGRectOffset(pinBallBorderRect, -shadow2Offset.width, -shadow2Offset.height);
-                pinBallBorderRect = CGRectInset(CGRectUnion(pinBallBorderRect, [pinBallPath bounds]), -1, -1);
-                
-                UIBezierPath* pinBallNegativePath = [UIBezierPath bezierPathWithRect: pinBallBorderRect];
-                [pinBallNegativePath appendPath: pinBallPath];
-                pinBallNegativePath.usesEvenOddFillRule = YES;
-                
-                CGContextSaveGState(context);
-                {
-                    CGFloat xOffset = shadow2Offset.width + round(pinBallBorderRect.size.width);
-                    CGFloat yOffset = shadow2Offset.height;
-                    CGContextSetShadowWithColor(context,
-                                                CGSizeMake(xOffset + copysign(0.1, xOffset), yOffset + copysign(0.1, yOffset)),
-                                                shadow2BlurRadius,
-                                                shadow2.CGColor);
-                    
-                    [pinBallPath addClip];
-                    CGAffineTransform transform = CGAffineTransformMakeTranslation(-round(pinBallBorderRect.size.width), 0);
-                    [pinBallNegativePath applyTransform: transform];
-                    [[UIColor grayColor] setFill];
-                    [pinBallNegativePath fill];
-                }
-                CGContextRestoreGState(context);
-                
-                [strokeColor setStroke];
-                pinBallPath.lineWidth = 0.5;
-                [pinBallPath stroke];
-                
-                
-                //// Pin Gradiant Overlay Drawing
-                UIBezierPath* pinGradiantOverlayPath = [UIBezierPath bezierPathWithRect: CGRectMake(50.5, 25, 3, 23)];
-                CGContextSaveGState(context);
-                [pinGradiantOverlayPath addClip];
-                CGContextDrawLinearGradient(context, vertStickGradient, CGPointMake(52, 25), CGPointMake(52, 48), 0);
-                CGContextRestoreGState(context);
-            }
+            //// Below Pin Circle Drawing
+            UIBezierPath* belowPinCirclePath = [UIBezierPath bezierPathWithOvalInRect: CGRectMake(6.5, 37.5, 5, 2.5)];
+            [bottomCircle setFill];
+            [belowPinCirclePath fill];
             
             
-            //// Pin Group Shadow Drawing
-            UIBezierPath* pinGroupShadowPath = [UIBezierPath bezierPath];
-            [pinGroupShadowPath moveToPoint: CGPointMake(-36, 41)];
-            [pinGroupShadowPath addLineToPoint: CGPointMake(-33, 41)];
-            [pinGroupShadowPath addLineToPoint: CGPointMake(-22.64, 29.2)];
-            [pinGroupShadowPath addCurveToPoint: CGPointMake(-12.59, 24.35) controlPoint1: CGPointMake(-22.64, 29.2) controlPoint2: CGPointMake(-14.49, 29)];
-            [pinGroupShadowPath addCurveToPoint: CGPointMake(-22.64, 19) controlPoint1: CGPointMake(-10.69, 19.7) controlPoint2: CGPointMake(-18.36, 18.25)];
-            [pinGroupShadowPath addCurveToPoint: CGPointMake(-30.11, 24.35) controlPoint1: CGPointMake(-26.92, 19.75) controlPoint2: CGPointMake(-30.18, 20.91)];
-            [pinGroupShadowPath addCurveToPoint: CGPointMake(-25.72, 28.47) controlPoint1: CGPointMake(-30.03, 27.79) controlPoint2: CGPointMake(-25.72, 28.47)];
-            [pinGroupShadowPath addLineToPoint: CGPointMake(-36, 41)];
-            [pinGroupShadowPath closePath];
-            pinGroupShadowPath.lineJoinStyle = kCGLineJoinRound;
-            
+            //// Main Pin Stick Drawing
+            UIBezierPath* mainPinStickPath = [UIBezierPath bezierPathWithRect: CGRectMake(7.5, 16, 3, 23)];
             CGContextSaveGState(context);
-            CGContextSetShadowWithColor(context, pinGroupShadowColorOffset, pinGroupShadowColorBlurRadius, pinGroupShadowColor.CGColor);
-            [fillColor2 setFill];
-            [pinGroupShadowPath fill];
+            [mainPinStickPath addClip];
+            CGContextDrawLinearGradient(context, stickGradient, CGPointMake(10.5, 27.5), CGPointMake(7.5, 27.5), 0);
             CGContextRestoreGState(context);
             
+            
+            //// Pin Ball Drawing
+            UIBezierPath* pinBallPath = [UIBezierPath bezierPathWithOvalInRect: CGRectMake(1, 1, 15.5, 15.5)];
+            CGContextSaveGState(context);
+            [pinBallPath addClip];
+            CGContextDrawRadialGradient(context, buttonGradient,
+                                        CGPointMake(6.47, 5.59), 0.42,
+                                        CGPointMake(8.75, 8.75), 8.35,
+                                        kCGGradientDrawsBeforeStartLocation | kCGGradientDrawsAfterEndLocation);
+            CGContextRestoreGState(context);
+            
+            ////// Pin Ball Inner Shadow
+            CGRect pinBallBorderRect = CGRectInset([pinBallPath bounds], -shadow2BlurRadius, -shadow2BlurRadius);
+            pinBallBorderRect = CGRectOffset(pinBallBorderRect, -shadow2Offset.width, -shadow2Offset.height);
+            pinBallBorderRect = CGRectInset(CGRectUnion(pinBallBorderRect, [pinBallPath bounds]), -1, -1);
+            
+            UIBezierPath* pinBallNegativePath = [UIBezierPath bezierPathWithRect: pinBallBorderRect];
+            [pinBallNegativePath appendPath: pinBallPath];
+            pinBallNegativePath.usesEvenOddFillRule = YES;
+            
+            CGContextSaveGState(context);
+            {
+                CGFloat xOffset = shadow2Offset.width + round(pinBallBorderRect.size.width);
+                CGFloat yOffset = shadow2Offset.height;
+                CGContextSetShadowWithColor(context,
+                                            CGSizeMake(xOffset + copysign(0.1, xOffset), yOffset + copysign(0.1, yOffset)),
+                                            shadow2BlurRadius,
+                                            shadow2.CGColor);
+                
+                [pinBallPath addClip];
+                CGAffineTransform transform = CGAffineTransformMakeTranslation(-round(pinBallBorderRect.size.width), 0);
+                [pinBallNegativePath applyTransform: transform];
+                [[UIColor grayColor] setFill];
+                [pinBallNegativePath fill];
+            }
+            CGContextRestoreGState(context);
+            
+            [strokeColor setStroke];
+            pinBallPath.lineWidth = 0.5;
+            [pinBallPath stroke];
+            
+            
+            //// Pin Gradiant Overlay Drawing
+            UIBezierPath* pinGradiantOverlayPath = [UIBezierPath bezierPathWithRect: CGRectMake(7.5, 16, 3, 23)];
+            CGContextSaveGState(context);
+            [pinGradiantOverlayPath addClip];
+            CGContextDrawLinearGradient(context, vertStickGradient, CGPointMake(9, 16), CGPointMake(9, 39), 0);
+            CGContextRestoreGState(context);
         }
         
+        //// Pin Group Shadow Drawing
+        UIBezierPath* pinGroupShadowPath = [UIBezierPath bezierPath];
+        [pinGroupShadowPath moveToPoint: CGPointMake(-43, 32)];
+        [pinGroupShadowPath addLineToPoint: CGPointMake(-40, 32)];
+        [pinGroupShadowPath addLineToPoint: CGPointMake(-29.64, 20.2)];
+        [pinGroupShadowPath addCurveToPoint: CGPointMake(-19.59, 15.35) controlPoint1: CGPointMake(-29.64, 20.2) controlPoint2: CGPointMake(-21.49, 20)];
+        [pinGroupShadowPath addCurveToPoint: CGPointMake(-29.64, 10) controlPoint1: CGPointMake(-17.69, 10.7) controlPoint2: CGPointMake(-25.36, 9.25)];
+        [pinGroupShadowPath addCurveToPoint: CGPointMake(-37.11, 15.35) controlPoint1: CGPointMake(-33.92, 10.75) controlPoint2: CGPointMake(-37.18, 11.91)];
+        [pinGroupShadowPath addCurveToPoint: CGPointMake(-32.72, 19.47) controlPoint1: CGPointMake(-37.03, 18.79) controlPoint2: CGPointMake(-32.72, 19.47)];
+        [pinGroupShadowPath addLineToPoint: CGPointMake(-43, 32)];
+        [pinGroupShadowPath closePath];
+        pinGroupShadowPath.lineJoinStyle = kCGLineJoinRound;
+        
+        CGContextSaveGState(context);
+        CGContextSetShadowWithColor(context, pinGroupShadowColorOffset, pinGroupShadowColorBlurRadius, pinGroupShadowColor.CGColor);
+        [fillColor2 setFill];
+        [pinGroupShadowPath fill];
+        CGContextRestoreGState(context);
         
         //// Cleanup
         CGGradientRelease(buttonGradient);
@@ -266,7 +263,7 @@
         
     } else if (type == ZSPinAnnotationTypeDisc) {
         
-        CGSize size = CGSizeMake(35, 34);
+        CGSize size = CGSizeMake(50, 50);
         UIGraphicsBeginImageContextWithOptions(size, NO, 0.0f);
         
         //// General Declarations
@@ -278,51 +275,53 @@
         UIColor* shadowColor2 = [UIColor colorWithRed: 0 green: 0 blue: 0 alpha: 1];
         
         //// Shadow Declarations
-        UIColor* shadow = [shadowColor2 colorWithAlphaComponent: 0.8];
-        CGSize shadowOffset = CGSizeMake(0.1, -0.1);
-        CGFloat shadowBlurRadius = 6;
+        UIColor* shadow = shadowColor2;
+        CGSize shadowOffset = CGSizeMake(0.1, 1.1);
+        CGFloat shadowBlurRadius = 12;
         UIColor* shadow2 = shadowColor2;
         CGSize shadow2Offset = CGSizeMake(0.1, -0.1);
-        CGFloat shadow2BlurRadius = 3;
+        CGFloat shadow2BlurRadius = 8.5;
         
-        //// Disc Drawing
-        UIBezierPath* discPath = [UIBezierPath bezierPathWithOvalInRect: CGRectMake(6.5, 6, 21, 21)];
+        //// Oval 2 Drawing
+        UIBezierPath* oval2Path = [UIBezierPath bezierPathWithOvalInRect: CGRectMake(16, 12, 22.5, 22.5)];
         CGContextSaveGState(context);
         CGContextSetShadowWithColor(context, shadowOffset, shadowBlurRadius, shadow.CGColor);
         [fillColor setFill];
-        [discPath fill];
+        [oval2Path fill];
         
-        ////// Disc Inner Shadow
-        CGRect discBorderRect = CGRectInset([discPath bounds], -shadow2BlurRadius, -shadow2BlurRadius);
-        discBorderRect = CGRectOffset(discBorderRect, -shadow2Offset.width, -shadow2Offset.height);
-        discBorderRect = CGRectInset(CGRectUnion(discBorderRect, [discPath bounds]), -1, -1);
+        ////// Oval 2 Inner Shadow
+        CGRect oval2BorderRect = CGRectInset([oval2Path bounds], -shadow2BlurRadius, -shadow2BlurRadius);
+        oval2BorderRect = CGRectOffset(oval2BorderRect, -shadow2Offset.width, -shadow2Offset.height);
+        oval2BorderRect = CGRectInset(CGRectUnion(oval2BorderRect, [oval2Path bounds]), -1, -1);
         
-        UIBezierPath* discNegativePath = [UIBezierPath bezierPathWithRect: discBorderRect];
-        [discNegativePath appendPath: discPath];
-        discNegativePath.usesEvenOddFillRule = YES;
+        UIBezierPath* oval2NegativePath = [UIBezierPath bezierPathWithRect: oval2BorderRect];
+        [oval2NegativePath appendPath: oval2Path];
+        oval2NegativePath.usesEvenOddFillRule = YES;
         
         CGContextSaveGState(context);
         {
-            CGFloat xOffset = shadow2Offset.width + round(discBorderRect.size.width);
+            CGFloat xOffset = shadow2Offset.width + round(oval2BorderRect.size.width);
             CGFloat yOffset = shadow2Offset.height;
             CGContextSetShadowWithColor(context,
                                         CGSizeMake(xOffset + copysign(0.1, xOffset), yOffset + copysign(0.1, yOffset)),
                                         shadow2BlurRadius,
                                         shadow2.CGColor);
             
-            [discPath addClip];
-            CGAffineTransform transform = CGAffineTransformMakeTranslation(-round(discBorderRect.size.width), 0);
-            [discNegativePath applyTransform: transform];
+            [oval2Path addClip];
+            CGAffineTransform transform = CGAffineTransformMakeTranslation(-round(oval2BorderRect.size.width), 0);
+            [oval2NegativePath applyTransform: transform];
             [[UIColor grayColor] setFill];
-            [discNegativePath fill];
+            [oval2NegativePath fill];
         }
         CGContextRestoreGState(context);
         
         CGContextRestoreGState(context);
         
         [strokeColor setStroke];
-        discPath.lineWidth = 2;
-        [discPath stroke];
+        oval2Path.lineWidth = 2.5;
+        [oval2Path stroke];
+        
+        
         
         UIImage* result = UIGraphicsGetImageFromCurrentImageContext();
         UIGraphicsEndImageContext();
@@ -335,26 +334,29 @@
         
     }  else if (type == ZSPinAnnotationTypeTag) {
         
-        CGSize size = CGSizeMake(57, 88);
+        CGSize size = CGSizeMake(50, 50);
         UIGraphicsBeginImageContextWithOptions(size, NO, 0.0f);
+        
+        //// General Declarations
+        CGContextRef context = UIGraphicsGetCurrentContext();
         
         //// Color Declarations
         UIColor* fillColor = color;
         
         //// Tag Drawing
         UIBezierPath* tagPath = [UIBezierPath bezierPath];
-        [tagPath moveToPoint: CGPointMake(23.76, 24.38)];
-        [tagPath addCurveToPoint: CGPointMake(23.76, 15.81) controlPoint1: CGPointMake(21.41, 22.01) controlPoint2: CGPointMake(21.41, 18.17)];
-        [tagPath addCurveToPoint: CGPointMake(32.24, 15.81) controlPoint1: CGPointMake(26.1, 13.44) controlPoint2: CGPointMake(29.9, 13.44)];
-        [tagPath addCurveToPoint: CGPointMake(32.24, 24.38) controlPoint1: CGPointMake(34.59, 18.17) controlPoint2: CGPointMake(34.59, 22.01)];
-        [tagPath addCurveToPoint: CGPointMake(23.76, 24.38) controlPoint1: CGPointMake(29.9, 26.74) controlPoint2: CGPointMake(26.1, 26.74)];
+        [tagPath moveToPoint: CGPointMake(11.76, 18.38)];
+        [tagPath addCurveToPoint: CGPointMake(11.76, 9.81) controlPoint1: CGPointMake(9.41, 16.01) controlPoint2: CGPointMake(9.41, 12.17)];
+        [tagPath addCurveToPoint: CGPointMake(20.24, 9.81) controlPoint1: CGPointMake(14.1, 7.44) controlPoint2: CGPointMake(17.9, 7.44)];
+        [tagPath addCurveToPoint: CGPointMake(20.24, 18.38) controlPoint1: CGPointMake(22.59, 12.17) controlPoint2: CGPointMake(22.59, 16.01)];
+        [tagPath addCurveToPoint: CGPointMake(11.76, 18.38) controlPoint1: CGPointMake(17.9, 20.74) controlPoint2: CGPointMake(14.1, 20.74)];
         [tagPath closePath];
-        [tagPath moveToPoint: CGPointMake(28, 45.5)];
-        [tagPath addCurveToPoint: CGPointMake(38, 20.6) controlPoint1: CGPointMake(27.99, 45.51) controlPoint2: CGPointMake(38, 26.17)];
-        [tagPath addCurveToPoint: CGPointMake(28, 10.5) controlPoint1: CGPointMake(38, 15.02) controlPoint2: CGPointMake(33.52, 10.5)];
-        [tagPath addCurveToPoint: CGPointMake(18, 20.6) controlPoint1: CGPointMake(22.48, 10.5) controlPoint2: CGPointMake(18, 15.02)];
-        [tagPath addCurveToPoint: CGPointMake(28, 45.5) controlPoint1: CGPointMake(18, 26.17) controlPoint2: CGPointMake(28, 45.5)];
-        [tagPath addLineToPoint: CGPointMake(28, 45.5)];
+        [tagPath moveToPoint: CGPointMake(16, 39.5)];
+        [tagPath addCurveToPoint: CGPointMake(26, 14.6) controlPoint1: CGPointMake(15.99, 39.51) controlPoint2: CGPointMake(26, 20.17)];
+        [tagPath addCurveToPoint: CGPointMake(16, 4.5) controlPoint1: CGPointMake(26, 9.02) controlPoint2: CGPointMake(21.52, 4.5)];
+        [tagPath addCurveToPoint: CGPointMake(6, 14.6) controlPoint1: CGPointMake(10.48, 4.5) controlPoint2: CGPointMake(6, 9.02)];
+        [tagPath addCurveToPoint: CGPointMake(16, 39.5) controlPoint1: CGPointMake(6, 20.17) controlPoint2: CGPointMake(16, 39.5)];
+        [tagPath addLineToPoint: CGPointMake(16, 39.5)];
         [tagPath closePath];
         [fillColor setFill];
         [tagPath fill];

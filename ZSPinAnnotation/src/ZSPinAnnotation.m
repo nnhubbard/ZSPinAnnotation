@@ -382,7 +382,7 @@
  */
 - (UIColor *)darkerColorForColor:(UIColor *)c {
     
-    float r, g, b, a;
+    CGFloat r, g, b, a;
     if ([c getRed:&r green:&g blue:&b alpha:&a])
         return [UIColor colorWithRed:MAX(r - 0.2, 0.0)
                                green:MAX(g - 0.2, 0.0)

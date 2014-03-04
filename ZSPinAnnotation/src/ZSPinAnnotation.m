@@ -40,8 +40,10 @@
 - (id)initWithAnnotation:(id<MKAnnotation>)annotation reuseIdentifier:(NSString *)reuseIdentifier {
     if(self = [super initWithAnnotation:annotation reuseIdentifier:reuseIdentifier]) {
         // Defaults
-        //        self.annotationColor = [UIColor redColor];
-        //        self.annotationType = ZSPinAnnotationTypeStandard;
+        self.annotationColor = [UIColor redColor];
+        self.annotationType = ZSPinAnnotationTypeStandard;
+        
+        //Correct position of callout accessory view
         self.calloutOffset = CGPointMake(1, 10);
     }
     return self;

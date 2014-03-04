@@ -13,6 +13,8 @@
 + (id)sharedCache;
 @end
 
+#define iOS7orLater ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0)
+
 @implementation ZSPinAnnotation
 
 /**
@@ -38,8 +40,9 @@
 - (id)initWithAnnotation:(id<MKAnnotation>)annotation reuseIdentifier:(NSString *)reuseIdentifier {
     if(self = [super initWithAnnotation:annotation reuseIdentifier:reuseIdentifier]) {
         // Defaults
-        self.annotationColor = [UIColor redColor];
-        self.annotationType = ZSPinAnnotationTypeStandard;
+        //        self.annotationColor = [UIColor redColor];
+        //        self.annotationType = ZSPinAnnotationTypeStandard;
+        self.calloutOffset = CGPointMake(1, 10);
     }
     return self;
 }
@@ -127,7 +130,7 @@
         NSArray* buttonGradientColors = [NSArray arrayWithObjects:
                                          (id)buttonBottomColor.CGColor,
                                          (id)fillColor.CGColor, nil];
-        CGFloat buttonGradientLocations[] = {0, 0.31};
+        CGFloat buttonGradientLocations[] = {0, iOS7orLater ? 0 : 0.31};
         CGGradientRef buttonGradient = CGGradientCreateWithColors(colorSpace, (__bridge CFArrayRef)buttonGradientColors, buttonGradientLocations);
         NSArray* stickGradientColors = [NSArray arrayWithObjects:
                                         (id)color8.CGColor,
@@ -186,43 +189,57 @@
                                             kCGGradientDrawsBeforeStartLocation | kCGGradientDrawsAfterEndLocation);
                 CGContextRestoreGState(context);
                 
-                ////// Pin Ball Inner Shadow
-                CGRect pinBallBorderRect = CGRectInset([pinBallPath bounds], -shadow2BlurRadius, -shadow2BlurRadius);
-                pinBallBorderRect = CGRectOffset(pinBallBorderRect, -shadow2Offset.width, -shadow2Offset.height);
-                pinBallBorderRect = CGRectInset(CGRectUnion(pinBallBorderRect, [pinBallPath bounds]), -1, -1);
-                
-                UIBezierPath* pinBallNegativePath = [UIBezierPath bezierPathWithRect: pinBallBorderRect];
-                [pinBallNegativePath appendPath: pinBallPath];
-                pinBallNegativePath.usesEvenOddFillRule = YES;
-                
-                CGContextSaveGState(context);
+                if(iOS7orLater)
                 {
-                    CGFloat xOffset = shadow2Offset.width + round(pinBallBorderRect.size.width);
-                    CGFloat yOffset = shadow2Offset.height;
-                    CGContextSetShadowWithColor(context,
-                                                CGSizeMake(xOffset + copysign(0.1, xOffset), yOffset + copysign(0.1, yOffset)),
-                                                shadow2BlurRadius,
-                                                shadow2.CGColor);
+                    UIBezierPath* whitePinGlance = [UIBezierPath bezierPathWithOvalInRect: CGRectMake(47, 13, 3.5, 3.5)];
+                    [[UIColor whiteColor] setFill];
+                    [whitePinGlance fill];
                     
-                    [pinBallPath addClip];
-                    CGAffineTransform transform = CGAffineTransformMakeTranslation(-round(pinBallBorderRect.size.width), 0);
-                    [pinBallNegativePath applyTransform: transform];
-                    [[UIColor grayColor] setFill];
-                    [pinBallNegativePath fill];
+                    [[UIColor whiteColor] setStroke];
+                    pinBallPath.lineWidth = 0.1;
+                    [pinBallPath stroke];
                 }
-                CGContextRestoreGState(context);
                 
-                [strokeColor setStroke];
-                pinBallPath.lineWidth = 0.5;
-                [pinBallPath stroke];
-                
-                
-                //// Pin Gradiant Overlay Drawing
-                UIBezierPath* pinGradiantOverlayPath = [UIBezierPath bezierPathWithRect: CGRectMake(50.5, 25, 3, 23)];
-                CGContextSaveGState(context);
-                [pinGradiantOverlayPath addClip];
-                CGContextDrawLinearGradient(context, vertStickGradient, CGPointMake(52, 25), CGPointMake(52, 48), 0);
-                CGContextRestoreGState(context);
+                ////// Pin Ball Inner Shadow
+                if(!iOS7orLater)
+                {
+                    CGRect pinBallBorderRect = CGRectInset([pinBallPath bounds], -shadow2BlurRadius, -shadow2BlurRadius);
+                    pinBallBorderRect = CGRectOffset(pinBallBorderRect, -shadow2Offset.width, -shadow2Offset.height);
+                    pinBallBorderRect = CGRectInset(CGRectUnion(pinBallBorderRect, [pinBallPath bounds]), -1, -1);
+                    
+                    UIBezierPath* pinBallNegativePath = [UIBezierPath bezierPathWithRect: pinBallBorderRect];
+                    [pinBallNegativePath appendPath: pinBallPath];
+                    pinBallNegativePath.usesEvenOddFillRule = YES;
+                    
+                    CGContextSaveGState(context);
+                    {
+                        CGFloat xOffset = shadow2Offset.width + round(pinBallBorderRect.size.width);
+                        CGFloat yOffset = shadow2Offset.height;
+                        CGContextSetShadowWithColor(context,
+                                                    CGSizeMake(xOffset + copysign(0.1, xOffset), yOffset + copysign(0.1, yOffset)),
+                                                    shadow2BlurRadius,
+                                                    shadow2.CGColor);
+                        
+                        [pinBallPath addClip];
+                        CGAffineTransform transform = CGAffineTransformMakeTranslation(-round(pinBallBorderRect.size.width), 0);
+                        [pinBallNegativePath applyTransform: transform];
+                        [[UIColor grayColor] setFill];
+                        [pinBallNegativePath fill];
+                    }
+                    CGContextRestoreGState(context);
+                    
+                    [strokeColor setStroke];
+                    pinBallPath.lineWidth = 0.5;
+                    [pinBallPath stroke];
+                    
+                    
+                    //// Pin Gradiant Overlay Drawing
+                    UIBezierPath* pinGradiantOverlayPath = [UIBezierPath bezierPathWithRect: CGRectMake(50.5, 25, 3, 23)];
+                    CGContextSaveGState(context);
+                    [pinGradiantOverlayPath addClip];
+                    CGContextDrawLinearGradient(context, vertStickGradient, CGPointMake(52, 25), CGPointMake(52, 48), 0);
+                    CGContextRestoreGState(context);
+                }
             }
             
             
@@ -391,5 +408,22 @@
     return c;
     
 }//end
+
+#pragma mark Overrides
+
+
+//To change the size of the tappable area that will show the callout accessory view
+- (BOOL)pointInside:(CGPoint)point withEvent:(UIEvent*)event
+{
+    if(point.x > 30 && point.x < 80 && point.y > 0 && point.y < 50)
+    {
+        self.enabled = YES;
+    }
+    else
+    {
+        self.enabled = NO;
+    }
+    return self.enabled;
+}
 
 @end

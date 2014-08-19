@@ -129,12 +129,14 @@
         UIColor* color9 = [UIColor colorWithRed: 0.001 green: 0.001 blue: 0.001 alpha: 0.511];
         
         //// Gradient Declarations
-        NSArray* buttonGradientColors = [NSArray arrayWithObjects:
+        /*NSArray* buttonGradientColors = [NSArray arrayWithObjects:
                                          (id)buttonBottomColor.CGColor,
-                                         (id)fillColor.CGColor, nil];
+                                         (id)fillColor.CGColor, nil];*/
+        NSArray* buttonGradientColors = @[(id)buttonBottomColor.CGColor,
+                                         (id)fillColor.CGColor];
         CGFloat buttonGradientLocations[] = {0, iOS7orLater ? 0 : 0.31};
         CGGradientRef buttonGradient = CGGradientCreateWithColors(colorSpace, (__bridge CFArrayRef)buttonGradientColors, buttonGradientLocations);
-        NSArray* stickGradientColors = [NSArray arrayWithObjects:
+        /*NSArray* stickGradientColors = [NSArray arrayWithObjects:
                                         (id)color8.CGColor,
                                         (id)[UIColor colorWithRed: 0.524 green: 0.535 blue: 0.549 alpha: 1].CGColor,
                                         (id)gradientColor.CGColor,
@@ -143,15 +145,29 @@
                                         (id)[UIColor colorWithRed: 0.714 green: 0.727 blue: 0.743 alpha: 1].CGColor,
                                         (id)color7.CGColor,
                                         (id)[UIColor colorWithRed: 0.545 green: 0.555 blue: 0.567 alpha: 1].CGColor,
-                                        (id)color6.CGColor, nil];
+                                        (id)color6.CGColor, nil];*/
+        NSArray* stickGradientColors = @[(id)color8.CGColor,
+                                        (id)[UIColor colorWithRed: 0.524 green: 0.535 blue: 0.549 alpha: 1].CGColor,
+                                        (id)gradientColor.CGColor,
+                                        (id)[UIColor colorWithRed: 0.714 green: 0.727 blue: 0.743 alpha: 1].CGColor,
+                                        (id)strokeColor2.CGColor,
+                                        (id)[UIColor colorWithRed: 0.714 green: 0.727 blue: 0.743 alpha: 1].CGColor,
+                                        (id)color7.CGColor,
+                                        (id)[UIColor colorWithRed: 0.545 green: 0.555 blue: 0.567 alpha: 1].CGColor,
+                                        (id)color6.CGColor];
         CGFloat stickGradientLocations[] = {0.16, 0.24, 0.31, 0.39, 0.5, 0.59, 0.69, 0.81, 0.89};
         CGGradientRef stickGradient = CGGradientCreateWithColors(colorSpace, (__bridge CFArrayRef)stickGradientColors, stickGradientLocations);
-        NSArray* vertStickGradientColors = [NSArray arrayWithObjects:
+        /*NSArray* vertStickGradientColors = [NSArray arrayWithObjects:
                                             (id)stickGradiantColor.CGColor,
                                             (id)[UIColor colorWithRed: 0.5 green: 0 blue: 0 alpha: 0.154].CGColor,
                                             (id)color2.CGColor,
                                             (id)[UIColor colorWithRed: 0 green: 0 blue: 0 alpha: 0.07].CGColor,
-                                            (id)color5.CGColor, nil];
+                                            (id)color5.CGColor, nil];*/
+        NSArray* vertStickGradientColors = @[(id)stickGradiantColor.CGColor,
+                                            (id)[UIColor colorWithRed: 0.5 green: 0 blue: 0 alpha: 0.154].CGColor,
+                                            (id)color2.CGColor,
+                                            (id)[UIColor colorWithRed: 0 green: 0 blue: 0 alpha: 0.07].CGColor,
+                                            (id)color5.CGColor];
         CGFloat vertStickGradientLocations[] = {0, 0.13, 0.3, 0.65, 1};
         CGGradientRef vertStickGradient = CGGradientCreateWithColors(colorSpace, (__bridge CFArrayRef)vertStickGradientColors, vertStickGradientLocations);
         

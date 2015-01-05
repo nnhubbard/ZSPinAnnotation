@@ -44,6 +44,6 @@ Take a look at the demo project in the download for an example of how to use `ZS
 
 Pin Types
 ---
-ZSPinAnnotation provides three different types of pin images: `ZSPinAnnotationTypeStandard`, `ZSPinAnnotationTypeDisc` and `ZSPinAnnotationTypeTag`. The default is `ZSPinAnnotationTypeStandard` which defaults to the color `red`.
+ZSPinAnnotation provides three different types of pin images: `ZSPinAnnotationTypeStandard`, `ZSPinAnnotationTypeDisc`, `ZSPinAnnotationTypeTag` and `ZSPinAnnotationTypeTagStroke`. The default is `ZSPinAnnotationTypeStandard` which defaults to the color `red`.
 
-![Annotation Types](http://f.cl.ly/items/1y0Q2f1R2K3L1g3J2T2A/types.png "Annotation Types")
+![Annotation Types](http://cl.ly/image/3A1P0h2F1h39/types.png "Annotation Types")

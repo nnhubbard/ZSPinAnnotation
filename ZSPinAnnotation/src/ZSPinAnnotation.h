@@ -14,7 +14,8 @@
 typedef enum {
     ZSPinAnnotationTypeStandard,
     ZSPinAnnotationTypeDisc,
-    ZSPinAnnotationTypeTag
+    ZSPinAnnotationTypeTag,
+    ZSPinAnnotationTypeTagStroke
 } ZSPinAnnotationType;
 
 /*!

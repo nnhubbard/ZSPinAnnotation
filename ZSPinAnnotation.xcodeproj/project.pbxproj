@@ -21,6 +21,7 @@
 		23495D4D148ECD3F003E3691 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23495D4C148ECD3F003E3691 /* MapKit.framework */; };
 		23495D55148ECE4A003E3691 /* ZSAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 23495D54148ECE4A003E3691 /* ZSAnnotation.m */; };
 		23495D5B148ED052003E3691 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23495D5A148ED052003E3691 /* CoreLocation.framework */; };
+		2391D7321A5A49B80032BF1E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2391D7311A5A49B80032BF1E /* Images.xcassets */; };
 		451F5A851717803600153DBF /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 451F5A841717803600153DBF /* Default-568h@2x.png */; };
 		453E5118179F2FCA00A09188 /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 453E5117179F2FCA00A09188 /* CoreImage.framework */; };
 /* End PBXBuildFile section */
@@ -47,6 +48,7 @@
 		23495D53148ECE4A003E3691 /* ZSAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ZSAnnotation.h; path = ZSPinAnnotation/ZSAnnotation.h; sourceTree = "<group>"; };
 		23495D54148ECE4A003E3691 /* ZSAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ZSAnnotation.m; path = ZSPinAnnotation/ZSAnnotation.m; sourceTree = "<group>"; };
 		23495D5A148ED052003E3691 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		2391D7311A5A49B80032BF1E /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = ZSPinAnnotation/Images.xcassets; sourceTree = "<group>"; };
 		451F5A841717803600153DBF /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		453E5117179F2FCA00A09188 /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = System/Library/Frameworks/CoreImage.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
@@ -136,6 +138,7 @@
 				23495D3B148ECCFE003E3691 /* ZSPinAnnotation.m */,
 				23495D53148ECE4A003E3691 /* ZSAnnotation.h */,
 				23495D54148ECE4A003E3691 /* ZSAnnotation.m */,
+				2391D7311A5A49B80032BF1E /* Images.xcassets */,
 			);
 			name = ZSPinAnnotation;
 			sourceTree = "<group>";
@@ -192,6 +195,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				23495D27148ECCD0003E3691 /* InfoPlist.strings in Resources */,
+				2391D7321A5A49B80032BF1E /* Images.xcassets in Resources */,
 				23495D33148ECCD1003E3691 /* ZSViewController.xib in Resources */,
 				2336E62B148EE177006F9AD9 /* README.md in Resources */,
 				451F5A851717803600153DBF /* Default-568h@2x.png in Resources */,
@@ -282,6 +286,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ZSPinAnnotation/ZSPinAnnotation-Prefix.pch";
@@ -296,6 +302,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ZSPinAnnotation/ZSPinAnnotation-Prefix.pch";

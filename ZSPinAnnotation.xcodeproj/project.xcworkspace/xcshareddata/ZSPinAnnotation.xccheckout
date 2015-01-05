@@ -5,34 +5,46 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>630F3932-FC34-457F-90DE-1E80DE5A273C</string>
+	<string>91773B2E-E549-4229-A36A-2F5F08D9826F</string>
 	<key>IDESourceControlProjectName</key>
 	<string>ZSPinAnnotation</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>1DE443A8-861E-4E73-AB66-3A4CBEE97CE6</key>
-		<string>ssh://github.com/nnhubbard/ZSPinAnnotation.git</string>
+		<key>D4901E2DECC4ACCA927A8E9BA33FBB59E4A0AF3D</key>
+		<string>https://bitbucket.org/zedsaid/simple-geocaching.git</string>
+		<key>F9A956DC06B32736D5A2A21E2CE43D45FBCF84B5</key>
+		<string>github.com:nnhubbard/ZSPinAnnotation.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>ZSPinAnnotation.xcodeproj/project.xcworkspace</string>
+	<string>ZSPinAnnotation.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>1DE443A8-861E-4E73-AB66-3A4CBEE97CE6</key>
+		<key>D4901E2DECC4ACCA927A8E9BA33FBB59E4A0AF3D</key>
+		<string>../../..</string>
+		<key>F9A956DC06B32736D5A2A21E2CE43D45FBCF84B5</key>
 		<string>../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>https://bitbucket.org/zedsaid/simple-geocaching.git</string>
+	<string>github.com:nnhubbard/ZSPinAnnotation.git</string>
 	<key>IDESourceControlProjectVersion</key>
-	<integer>110</integer>
+	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>1DE443A8-861E-4E73-AB66-3A4CBEE97CE6</string>
+	<string>F9A956DC06B32736D5A2A21E2CE43D45FBCF84B5</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>1DE443A8-861E-4E73-AB66-3A4CBEE97CE6</string>
+			<string>D4901E2DECC4ACCA927A8E9BA33FBB59E4A0AF3D</string>
+			<key>IDESourceControlWCCName</key>
+			<string></string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>F9A956DC06B32736D5A2A21E2CE43D45FBCF84B5</string>
 			<key>IDESourceControlWCCName</key>
 			<string>ZSPinAnnotation</string>
 		</dict>

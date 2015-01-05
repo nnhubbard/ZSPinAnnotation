@@ -39,12 +39,11 @@
  */
 - (id)initWithAnnotation:(id<MKAnnotation>)annotation reuseIdentifier:(NSString *)reuseIdentifier {
     if(self = [super initWithAnnotation:annotation reuseIdentifier:reuseIdentifier]) {
+        
         // Defaults
         self.annotationColor = [UIColor redColor];
         self.annotationType = ZSPinAnnotationTypeStandard;
-        
-        //Correct position of callout accessory view
-        self.calloutOffset = CGPointMake(1, 10);
+
     }
     return self;
 }
@@ -87,6 +86,8 @@
         typeName = @"_disc";
     } else if (type == ZSPinAnnotationTypeTag) {
         typeName = @"_tag";
+    } else if (type == ZSPinAnnotationTypeTag) {
+        typeName = @"_tagStroke";
     }
     
     colorString = [colorString stringByAppendingString:typeName];
@@ -387,10 +388,87 @@
         //return the image
         return result;
         
+    } else if (type == ZSPinAnnotationTypeTagStroke) {
+        
+        CGSize size = CGSizeMake(48, 72);
+        UIGraphicsBeginImageContextWithOptions(size, NO, 0.0f);
+        
+        //// Color Declarations
+        UIColor* fillColor = color;
+        
+        //// General Declarations
+        CGContextRef context = UIGraphicsGetCurrentContext();
+        
+        //// Color Declarations
+        UIColor* pointerColor = fillColor;
+        UIColor* pointerDropShadowColor = [UIColor colorWithRed: 0 green: 0 blue: 0 alpha: 1];
+        UIColor* pointerStrokeColor = [UIColor colorWithRed: 1 green: 1 blue: 1 alpha: 1];
+        
+        //// Shadow Declarations
+        UIColor* pointerDropShadow = [pointerDropShadowColor colorWithAlphaComponent: 0.62];
+        CGSize pointerDropShadowOffset = CGSizeMake(0.1, 2.1);
+        CGFloat pointerDropShadowBlurRadius = 7;
+        
+        //// Pointer Drawing
+        UIBezierPath* pointerPath = UIBezierPath.bezierPath;
+        [pointerPath moveToPoint: CGPointMake(33, 18.23)];
+        [pointerPath addCurveToPoint: CGPointMake(25.61, 33.87) controlPoint1: CGPointMake(33, 23.29) controlPoint2: CGPointMake(27.56, 31.2)];
+        [pointerPath addLineToPoint: CGPointMake(25.61, 33.87)];
+        [pointerPath addLineToPoint: CGPointMake(25.56, 33.95)];
+        [pointerPath addCurveToPoint: CGPointMake(24.92, 34.81) controlPoint1: CGPointMake(25.17, 34.48) controlPoint2: CGPointMake(24.92, 34.81)];
+        [pointerPath addLineToPoint: CGPointMake(24.91, 34.81)];
+        [pointerPath addLineToPoint: CGPointMake(23.94, 36)];
+        [pointerPath addLineToPoint: CGPointMake(22.33, 33.87)];
+        [pointerPath addLineToPoint: CGPointMake(22.34, 33.87)];
+        [pointerPath addCurveToPoint: CGPointMake(14.95, 18.3) controlPoint1: CGPointMake(20.38, 31.21) controlPoint2: CGPointMake(14.95, 23.35)];
+        [pointerPath addCurveToPoint: CGPointMake(14.95, 16.47) controlPoint1: CGPointMake(14.95, 17.54) controlPoint2: CGPointMake(14.95, 16.94)];
+        [pointerPath addCurveToPoint: CGPointMake(14.95, 16.4) controlPoint1: CGPointMake(14.95, 16.45) controlPoint2: CGPointMake(14.95, 16.43)];
+        [pointerPath addCurveToPoint: CGPointMake(14.95, 16.34) controlPoint1: CGPointMake(14.95, 16.38) controlPoint2: CGPointMake(14.95, 16.36)];
+        [pointerPath addCurveToPoint: CGPointMake(14.95, 16.31) controlPoint1: CGPointMake(14.95, 16.33) controlPoint2: CGPointMake(14.95, 16.32)];
+        [pointerPath addCurveToPoint: CGPointMake(14.96, 16.27) controlPoint1: CGPointMake(14.95, 16.31) controlPoint2: CGPointMake(14.96, 16.28)];
+        [pointerPath addCurveToPoint: CGPointMake(20.58, 8.5) controlPoint1: CGPointMake(15.02, 12.63) controlPoint2: CGPointMake(17.36, 9.59)];
+        [pointerPath addCurveToPoint: CGPointMake(21.32, 8.27) controlPoint1: CGPointMake(20.82, 8.41) controlPoint2: CGPointMake(21.06, 8.33)];
+        [pointerPath addCurveToPoint: CGPointMake(21.59, 8.2) controlPoint1: CGPointMake(21.41, 8.25) controlPoint2: CGPointMake(21.5, 8.22)];
+        [pointerPath addCurveToPoint: CGPointMake(23.14, 8.02) controlPoint1: CGPointMake(22.08, 8.1) controlPoint2: CGPointMake(22.58, 8.02)];
+        [pointerPath addCurveToPoint: CGPointMake(24.92, 8.02) controlPoint1: CGPointMake(23.28, 8.02) controlPoint2: CGPointMake(24.73, 8.02)];
+        [pointerPath addCurveToPoint: CGPointMake(27.46, 8.53) controlPoint1: CGPointMake(25.87, 8.02) controlPoint2: CGPointMake(26.71, 8.22)];
+        [pointerPath addCurveToPoint: CGPointMake(32.94, 15.84) controlPoint1: CGPointMake(30.51, 9.6) controlPoint2: CGPointMake(32.43, 11.97)];
+        [pointerPath addCurveToPoint: CGPointMake(33, 16.38) controlPoint1: CGPointMake(32.96, 15.1) controlPoint2: CGPointMake(32.99, 13.82)];
+        [pointerPath addCurveToPoint: CGPointMake(33, 16.4) controlPoint1: CGPointMake(33, 16.39) controlPoint2: CGPointMake(33, 16.4)];
+        [pointerPath addCurveToPoint: CGPointMake(33, 16.43) controlPoint1: CGPointMake(33, 16.41) controlPoint2: CGPointMake(33, 16.42)];
+        [pointerPath addCurveToPoint: CGPointMake(33, 18.23) controlPoint1: CGPointMake(33, 16.9) controlPoint2: CGPointMake(33, 17.49)];
+        [pointerPath closePath];
+        [pointerPath moveToPoint: CGPointMake(23.99, 13.1)];
+        [pointerPath addCurveToPoint: CGPointMake(20.05, 17.06) controlPoint1: CGPointMake(21.81, 13.1) controlPoint2: CGPointMake(20.05, 14.87)];
+        [pointerPath addCurveToPoint: CGPointMake(23.99, 21.02) controlPoint1: CGPointMake(20.05, 19.25) controlPoint2: CGPointMake(21.81, 21.02)];
+        [pointerPath addCurveToPoint: CGPointMake(27.93, 17.06) controlPoint1: CGPointMake(26.16, 21.02) controlPoint2: CGPointMake(27.93, 19.25)];
+        [pointerPath addCurveToPoint: CGPointMake(23.99, 13.1) controlPoint1: CGPointMake(27.93, 14.87) controlPoint2: CGPointMake(26.16, 13.1)];
+        [pointerPath closePath];
+        CGContextSaveGState(context);
+        CGContextSetShadowWithColor(context, pointerDropShadowOffset, pointerDropShadowBlurRadius, [pointerDropShadow CGColor]);
+        [pointerColor setFill];
+        [pointerPath fill];
+        CGContextRestoreGState(context);
+        
+        [pointerStrokeColor setStroke];
+        pointerPath.lineWidth = 1.5;
+        [pointerPath stroke];
+        
+        
+        
+        UIImage* result = UIGraphicsGetImageFromCurrentImageContext();
+        UIGraphicsEndImageContext();
+        
+        // Save to cache
+        [pn.imageCache setObject:result forKey:colorString];
+        
+        //return the image
+        return result;
+        
     }
     
     return nil;
-	
+    
 }//end
 
 
@@ -411,21 +489,5 @@
     
 }//end
 
-#pragma mark Overrides
-
-
-//To change the size of the tappable area that will show the callout accessory view
-- (BOOL)pointInside:(CGPoint)point withEvent:(UIEvent*)event
-{
-    if(point.x > 30 && point.x < 80 && point.y > 0 && point.y < 50)
-    {
-        self.enabled = YES;
-    }
-    else
-    {
-        self.enabled = NO;
-    }
-    return self.enabled;
-}
 
 @end

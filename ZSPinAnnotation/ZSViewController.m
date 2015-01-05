@@ -149,7 +149,7 @@
     }
     
     // Set the type of pin to draw and the color
-    pinView.annotationType = ZSPinAnnotationTypeStandard;
+    pinView.annotationType = ZSPinAnnotationTypeTagStroke;
     pinView.annotationColor = a.color;
     pinView.canShowCallout = YES;
     

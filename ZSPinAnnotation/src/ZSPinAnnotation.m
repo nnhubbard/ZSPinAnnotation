@@ -86,7 +86,7 @@
         typeName = @"_disc";
     } else if (type == ZSPinAnnotationTypeTag) {
         typeName = @"_tag";
-    } else if (type == ZSPinAnnotationTypeTag) {
+    } else if (type == ZSPinAnnotationTypeTagStroke) {
         typeName = @"_tagStroke";
     }
     

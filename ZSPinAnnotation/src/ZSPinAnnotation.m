@@ -10,7 +10,7 @@
 
 @interface ZSPinAnnotation ()
 @property (nonatomic, strong) NSCache *imageCache;
-+ (id)sharedCache;
++ (NSCache *)sharedCache;
 @end
 
 #define iOS7orLater ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0)
@@ -22,11 +22,11 @@
  *
  * @version $Revision: 0.1
  */
-+ (id)sharedCache {
++ (NSCache *)sharedCache {
     static dispatch_once_t pred = 0;
-    __strong static id _sharedObject = nil;
+    static NSCache  *_sharedObject = nil;
     dispatch_once(&pred, ^{
-        _sharedObject = [[self alloc] init];
+        _sharedObject = [[NSCache alloc] init];
     });
     return _sharedObject;
 }//end
@@ -70,8 +70,6 @@
  */
 - (UIImage *)pinAnnotationWithColor:(UIColor *)color {
     
-    // Shared object
-    ZSPinAnnotation *pn = [ZSPinAnnotation sharedCache];
     ZSPinAnnotationType type = self.annotationType;
     
     // Color String
@@ -93,9 +91,9 @@
     colorString = [colorString stringByAppendingString:typeName];
     
     // Caching
-    if (!pn.imageCache) pn.imageCache = [[NSCache alloc] init];
-    if ([pn.imageCache objectForKey:colorString]) {
-        return [pn.imageCache objectForKey:colorString];
+    if (!self.imageCache) self.imageCache = [ZSPinAnnotation sharedCache];
+    if ([self.imageCache objectForKey:colorString]) {
+        return [self.imageCache objectForKey:colorString];
     }
     
     // What type of pin are we drawing?
@@ -295,7 +293,7 @@
         UIGraphicsEndImageContext();
         
         // Save to cache
-        [pn.imageCache setObject:result forKey:colorString];
+        [self.imageCache setObject:result forKey:colorString];
         
         //return the image
         return result;
@@ -364,7 +362,7 @@
         UIGraphicsEndImageContext();
         
         // Save to cache
-        [pn.imageCache setObject:result forKey:colorString];
+        [self.imageCache setObject:result forKey:colorString];
         
         //return the image
         return result;
@@ -399,7 +397,7 @@
         UIGraphicsEndImageContext();
         
         // Save to cache
-        [pn.imageCache setObject:result forKey:colorString];
+        [self.imageCache setObject:result forKey:colorString];
         
         //return the image
         return result;
@@ -476,7 +474,7 @@
         UIGraphicsEndImageContext();
         
         // Save to cache
-        [pn.imageCache setObject:result forKey:colorString];
+        [self.imageCache setObject:result forKey:colorString];
         
         //return the image
         return result;
